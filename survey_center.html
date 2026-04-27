@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전사적 행정 설문 센터 | 신한국 총무국</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020617;
+            color: white;
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.2) 0, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(225, 29, 72, 0.2) 0, transparent 50%);
+            min-height: 100vh;
+        }
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .survey-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .survey-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Navigation -->
+        <nav class="mb-12 flex justify-between items-center">
+            <a href="system_b_dashboard.html" class="text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Return to Master Dashboard
+            </a>
+            <div class="text-[10px] font-mono text-slate-500">SYSTEM_SURVEY_CORE_v2.0</div>
+        </nav>
+
+        <!-- Header -->
+        <header class="mb-20 text-center">
+            <h1 class="text-6xl font-black mb-6 tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-slate-500">TOTAL DIAGNOSTIC <span class="text-indigo-500">CENTER</span></h1>
+            <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">전국 교구 및 부서의 행정 상태를 정밀하게 진단하기 위한 통합 설문 허브입니다. 모든 데이터는 AI 엔진에 의해 익명으로 분석됩니다.</p>
+        </header>
+
+        <!-- Survey Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Survey 1: Church Health -->
+            <div class="survey-card glass p-8 rounded-[2.5rem] flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:animate-bounce">🌱</div>
+                    <h3 class="text-2xl font-bold mb-4">교회 건강 진단</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-8">교회의 영적 성장과 공동체 결속력을 다각도로 분석하여 맞춤형 발전 전략을 도출합니다.</p>
+                </div>
+                <button class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 rounded-2xl text-xs font-black transition-all">진단 시작하기</button>
+            </div>
+
+            <!-- Survey 2: Admin Efficiency -->
+            <div class="survey-card glass p-8 rounded-[2.5rem] flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:animate-pulse">⚙️</div>
+                    <h3 class="text-2xl font-bold mb-4">행정 효율성 조사</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-8">실무자들의 시스템 활용도와 업무 부하를 파악하여 불필요한 절차를 제거하고 자동화를 가속합니다.</p>
+                </div>
+                <button class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 rounded-2xl text-xs font-black transition-all">조사 참여하기</button>
+            </div>
+
+            <!-- Survey 3: Heart Leadership -->
+            <div class="survey-card glass p-8 rounded-[2.5rem] flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-rose-500/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">💖</div>
+                    <h3 class="text-2xl font-bold mb-4">심정 리더십 지표</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-8">교구장님과 부서장님들의 심정적 소통 능력을 진단하여 조화로운 조직 문화를 조성합니다.</p>
+                </div>
+                <button class="w-full py-4 bg-rose-600 hover:bg-rose-500 rounded-2xl text-xs font-black transition-all">지표 측정하기</button>
+            </div>
+
+            <!-- Survey 4: Transparency -->
+            <div class="survey-card glass p-8 rounded-[2.5rem] flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-amber-500/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:rotate-12 transition-transform">⚖️</div>
+                    <h3 class="text-2xl font-bold mb-4">재무 투명성 감사</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-8">재무 집행의 무결성과 투명성을 자가 진단하여 대내외적 신뢰도를 확보합니다.</p>
+                </div>
+                <button class="w-full py-4 bg-amber-600 hover:bg-amber-500 rounded-2xl text-xs font-black transition-all">감사 수행하기</button>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="mt-24 border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-4">
+                <div class="px-4 py-2 bg-indigo-500/10 border border-indigo-500/30 rounded-xl text-indigo-400 font-black text-xs">AI ANALYSIS ACTIVE</div>
+                <div class="text-[11px] text-slate-500 uppercase tracking-widest font-bold">Total Submissions: 1,248</div>
+            </div>
+            <div class="flex gap-8 text-[10px] text-slate-600 font-black uppercase tracking-[0.2em]">
+                <span class="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+                <span class="hover:text-white cursor-pointer transition-colors">Data Ethics</span>
+                <span class="hover:text-white cursor-pointer transition-colors">Support</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

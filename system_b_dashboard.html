@@ -956,19 +956,35 @@
             </div>
         </div>
 
-        <!-- Specialized Mission Tools (Ministry Type Test & Workshop) -->
-        <div class="grid grid-cols-2 gap-8 mb-8">
-            <a href="ministry_test.html" class="glass p-8 rounded-[2.5rem] border-blue-500/20 hover:border-blue-500/50 transition-all group relative overflow-hidden block">
-                <div class="absolute -right-4 -bottom-4 text-8xl opacity-10 group-hover:scale-110 transition-transform">📋</div>
+        <!-- Specialized Mission Tools (Ministry Type, Surveys, Workshop) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <!-- 1. Ministry Type Test (External) -->
+            <a href="https://make-it-mine-35.lovable.app/" target="_blank" class="glass p-8 rounded-[2.5rem] border-blue-500/20 hover:border-blue-500/50 transition-all group relative overflow-hidden block">
+                <div class="absolute -right-4 -bottom-4 text-8xl opacity-10 group-hover:scale-110 transition-transform">🔍</div>
                 <div class="relative z-10">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center text-xl group-hover:animate-bounce">🔍</div>
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center text-xl group-hover:animate-bounce">📋</div>
                         <h4 class="text-[10px] font-black text-blue-400 tracking-widest uppercase">Diagnostic Tool</h4>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">목회유형 진단도구</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed max-w-sm">개인별 목회 스타일을 과학적으로 분석하여 최적화된 사역 방향과 잠재적 리스크를 진단합니다.</p>
+                    <h3 class="text-2xl font-bold text-white mb-2">목회유형 진단</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Lovable AI를 통한 정밀 목회 스타일 분석 시스템입니다. (외부 연결)</p>
                 </div>
             </a>
+
+            <!-- 2. Survey Center (Internal) -->
+            <a href="survey_center.html" class="glass p-8 rounded-[2.5rem] border-purple-500/20 hover:border-purple-500/50 transition-all group relative overflow-hidden block">
+                <div class="absolute -right-4 -bottom-4 text-8xl opacity-10 group-hover:scale-110 transition-transform">📊</div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center text-xl group-hover:animate-pulse">📝</div>
+                        <h4 class="text-[10px] font-black text-purple-400 tracking-widest uppercase">Survey Center</h4>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">행정 설문 센터</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">교회 건강, 행정 효율, 심정 리더십 등 전사적 데이터 수집 허브입니다.</p>
+                </div>
+            </a>
+
+            <!-- 3. Workshop Hub (Internal) -->
             <a href="workshop_hub.html" class="glass p-8 rounded-[2.5rem] border-emerald-500/20 hover:border-emerald-500/50 transition-all group relative overflow-hidden block">
                 <div class="absolute -right-4 -bottom-4 text-8xl opacity-10 group-hover:scale-110 transition-transform">🏢</div>
                 <div class="relative z-10">
@@ -976,8 +992,8 @@
                         <div class="w-10 h-10 bg-emerald-500/20 rounded-xl flex items-center justify-center text-xl group-hover:animate-pulse">🤝</div>
                         <h4 class="text-[10px] font-black text-emerald-400 tracking-widest uppercase">Empowerment</h4>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">사무장 워크숍 지원</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed max-w-sm">전국 사무장 역량 강화를 위한 리소스 센터 및 실시간 워크숍 진행 현황 모니터링 시스템입니다.</p>
+                    <h3 class="text-2xl font-bold text-white mb-2">사무장 워크숍</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">전국 사무장 역량 강화를 위한 교육 리소스 및 실시간 현황 모니터링입니다.</p>
                 </div>
             </a>
         </div>
@@ -1711,6 +1727,7 @@
         setInterval(updateTime, 16); // 60fps
         setInterval(updateStats, 5000); // 5s 실시간 엔진 데이터 동기화
 
+        setInterval(() => {
             // 사고 흐름 업데이트
             const thoughts = ["데이터 무결성 검증 중...", "보안 마스킹 엔진 최적화 완료", "220개 교회 제출 현황 동기화 중", "재무 이상 징후 교차 분석 중"];
             const stream = document.getElementById('thoughtStream');

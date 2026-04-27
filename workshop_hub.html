@@ -199,5 +199,33 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        function applyWorkshop(name) {
+            alert(`✅ [${name}] 신청이 완료되었습니다.\\n마스터 데이터베이스에 등록되었습니다.`);
+        }
+
+        function downloadResource(name) {
+            alert(`📂 [${name}] 다운로드를 시작합니다.\\n보안 연결을 통해 전송됩니다.`);
+        }
+
+        // Add event listeners to buttons and cards
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('신청') || btn.innerText.includes('접수')) {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    const title = btn.closest('.workshop-card').querySelector('h4').innerText;
+                    applyWorkshop(title);
+                };
+            }
+        });
+
+        document.querySelectorAll('.glass').forEach(card => {
+            const h5 = card.querySelector('h5');
+            if (h5 && card.parentElement.classList.contains('grid')) {
+                card.onclick = () => downloadResource(h5.innerText);
+            }
+        });
+    </script>
 </body>
 </html>

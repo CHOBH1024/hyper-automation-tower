@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEEKLY ADMINISTRATIVE REPORT | 신한국 총무국</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background-color: #f8fafc; }
+        .report-paper { background: white; box-shadow: 0 0 40px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        @media print {
+            .no-print { display: none; }
+            body { background: white; }
+            .report-paper { box-shadow: none; border: none; margin: 0; width: 100%; }
+        }
+        .section-title { position: relative; padding-left: 1rem; }
+        .section-title::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #0f172a; border-radius: 2px; }
+    </style>
+</head>
+<body class="py-12 px-6">
+    <div class="max-w-4xl mx-auto">
+        <!-- Controls -->
+        <div class="flex justify-between items-center mb-12 no-print">
+            <div class="flex items-center gap-4">
+                <a href="system_b_dashboard.html" class="p-2 hover:bg-slate-100 rounded-full transition-all">
+                    <i data-lucide="arrow-left" class="w-6 h-6"></i>
+                </a>
+                <h1 class="text-2xl font-black text-slate-900">주간 행정 보고서 <span class="text-slate-400 font-medium">Generator</span></h1>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="autoFill()" class="bg-indigo-50 text-indigo-700 px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-indigo-100 transition-all flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> AI 자동 완성
+                </button>
+                <button onclick="window.print()" class="bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-black transition-all flex items-center gap-2">
+                    <i data-lucide="printer" class="w-4 h-4"></i> PDF 출력
+                </button>
+            </div>
+        </div>
+
+        <!-- Report Form/Paper -->
+        <div id="reportArea" class="report-paper p-16 rounded-[2rem] min-h-[1123px]">
+            <!-- Header -->
+            <div class="border-b-4 border-slate-900 pb-8 mb-12 flex justify-between items-end">
+                <div>
+                    <div class="text-xs font-black text-indigo-600 tracking-[0.3em] uppercase mb-2">Weekly Administrative Executive Report</div>
+                    <h2 class="text-5xl font-black text-slate-900 tracking-tighter">주간 행정 업무 보고</h2>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm font-bold text-slate-500">보고 일자: <span id="reportDate" class="text-slate-900">2026. 04. 27</span></p>
+                    <p class="text-sm font-bold text-slate-500">보고자: <span class="text-slate-900">신한국 총무국 마스터 AI</span></p>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="space-y-12">
+                <!-- 1. 핵심 성과 지표 -->
+                <section>
+                    <h3 class="section-title text-xl font-black text-slate-900 mb-6">01. 주간 핵심 지표 (KPI)</h3>
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <p class="text-xs font-bold text-slate-500 mb-1">전사 제출률</p>
+                            <p id="stat-submission" class="text-3xl font-black text-slate-900">47.6%</p>
+                            <p class="text-[10px] text-rose-500 font-bold mt-2">▼ 전주 대비 2.4% 하락</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <p class="text-xs font-bold text-slate-500 mb-1">재무 집행률</p>
+                            <p id="stat-finance" class="text-3xl font-black text-slate-900">82.1%</p>
+                            <p class="text-[10px] text-emerald-500 font-bold mt-2">▲ 전주 대비 5.8% 상승</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <p class="text-xs font-bold text-slate-500 mb-1">보안 이상 징후</p>
+                            <p id="stat-security" class="text-3xl font-black text-slate-900">1건</p>
+                            <p class="text-[10px] text-slate-400 font-bold mt-2">● 안정 상태 유지</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. 주요 추진 업무 -->
+                <section>
+                    <h3 class="section-title text-xl font-black text-slate-900 mb-6">02. 주요 추진 업무 및 현황</h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-4">
+                            <div class="w-1 bg-indigo-500 rounded-full"></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">하이퍼 행정 설문 시스템 전사 배포 완료</h4>
+                                <p class="text-sm text-slate-500 mt-1">12개 영역 120문항 마스터 진단 도구 구축 및 데이터 연동 엔진 가동 시작.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-1 bg-indigo-500 rounded-full"></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">전국 사무장 워크숍 지원 센터 활성화</h4>
+                                <p class="text-sm text-slate-500 mt-1">지역별 참여율 실시간 모니터링 및 리소스 라이브러리 업데이트 14건 처리.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-1 bg-slate-200 rounded-full"></div>
+                            <div>
+                                <h4 class="font-bold text-slate-400">데이터 무결성 검증 (진행 중)</h4>
+                                <p class="text-sm text-slate-400 mt-1">Gyeongbuk 교구 재무 데이터 이상 징후 교차 분석 및 정밀 감사 준비 중.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. 차주 계획 -->
+                <section>
+                    <h3 class="section-title text-xl font-black text-slate-900 mb-6">03. 차주 주요 계획</h3>
+                    <ul class="list-disc list-inside space-y-3 text-sm text-slate-600 font-medium ml-4">
+                        <li>설문 결과 기반 AI 정밀 행정 진단 리포트 생성 엔진 고도화</li>
+                        <li>미제출 교구 대상 자동 독려 시스템(System L) 2차 가동</li>
+                        <li>상반기 재무 결산 및 하반기 예산 최적화 시뮬레이션 착수</li>
+                    </ul>
+                </section>
+
+                <!-- 4. 특이 사항 및 건의 -->
+                <section>
+                    <h3 class="section-title text-xl font-black text-slate-900 mb-6">04. 특이 사항 및 종합 의견</h3>
+                    <div class="bg-indigo-50 p-8 rounded-[2rem] border border-indigo-100">
+                        <p class="text-sm text-indigo-900 leading-relaxed italic">
+                            "현재 전사 설문 시스템 도입 초기 단계로 데이터 수집량이 급증하고 있습니다. 특히 120문항 마스터 모드 참여자의 이탈률을 방지하기 위한 보상 시스템(Gamification) 도입을 검토 중이며, 재무 이상 징후가 발견된 특정 교구에 대해서는 차주 중 직접 실사가 필요할 것으로 판단됩니다."
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-24 pt-12 border-t border-slate-100 flex justify-between items-center opacity-50">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white text-xs font-black">A</div>
+                    <span class="text-[10px] font-bold tracking-widest uppercase">Hyper Administration Core</span>
+                </div>
+                <div class="text-[10px] font-mono text-right">
+                    VER: 4.2.0-STABLE<br>
+                    ID: AR-2026-WK17-094
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('reportDate').innerText = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+        async function autoFill() {
+            const btn = document.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="refresh-cw" class="w-4 h-4 animate-spin"></i> 분석 중...';
+            
+            try {
+                const response = await fetch('GeneralAffairs_Master/master_index.json');
+                const master = await response.json();
+                
+                document.getElementById('stat-submission').innerText = master.summary.personnel.rate;
+                document.getElementById('stat-finance').innerText = master.summary.finance.status === 'OK' ? '정상' : '주의';
+                document.getElementById('stat-security').innerText = master.summary.security.issuesDetected + '건';
+                
+                alert("✅ 시스템 데이터 연동 완료. 보고서가 업데이트되었습니다.");
+            } catch (e) {
+                console.log("Mock data fill due to file missing in browser environment");
+                alert("⚠️ 실시간 데이터 연동 대기 중입니다. 현재는 시스템 기본값으로 작성되었습니다.");
+            } finally {
+                btn.innerHTML = originalText;
+                lucide.createIcons();
+            }
+        }
+    </script>
+</body>
+</html>

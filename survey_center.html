@@ -3,286 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPER SURVEY SYSTEM | 신한국 총무국</title>
+    <title>HYPER SURVEY - 신한국 총무국 행정 진단</title>
+    
+    <!-- CSS & Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- html2canvas for Image Download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <style>
-        :root {
-            --primary: #6366f1;
-            --secondary: #ec4899;
-            --accent: #8b5cf6;
-            --bg: #020617;
-        }
-        body {
-            background: var(--bg);
-            color: white;
-            font-family: 'Inter', 'Noto Sans KR', sans-serif;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0, transparent 50%);
-        }
-        .glass {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-        }
-        .survey-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .card-shine {
+        :root { --brand-primary: #4f46e5; --brand-dark: #1e1b4b; } /* Indigo Theme */
+        body { font-family: 'Pretendard', sans-serif; background-color: #f5f3ff; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        
+        /* Device Simulation Mode */
+        #app-viewport.mobile-mode { 
+            max-width: 414px; margin: 2rem auto; border: 14px solid #0f172a; 
+            border-radius: 3.5rem; height: 840px; overflow-y: auto; 
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); background: white;
             position: relative;
-            overflow: hidden;
         }
-        .card-shine::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
-            transform: rotate(45deg);
-            transition: 0.5s;
+        #app-viewport.mobile-mode::-webkit-scrollbar { display: none; }
+        
+        /* Animations */
+        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Option Buttons & Active States */
+        .option-btn { transition: all 0.2s ease; border: 2px solid #e2e8f0; -webkit-tap-highlight-color: transparent; }
+        @media (hover: hover) {
+            .option-btn:hover { border-color: var(--brand-primary); background-color: #eef2ff; transform: translateY(-2px); }
         }
-        .card-shine:hover::after {
-            left: 100%;
+        .option-btn:active { transform: scale(0.95); }
+        
+        .selected-answer { 
+            border-color: var(--brand-primary) !important; 
+            background-color: var(--brand-primary) !important; 
+            color: white !important; 
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3) !important;
+            transform: scale(1.02);
         }
-        .step-active {
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-        }
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; filter: brightness(1.5); }
-        }
-        .animate-pulse-glow {
-            animation: pulse-glow 3s infinite;
-        }
+        .selected-answer * { color: white !important; }
+
+        .progress-indicator { height: 6px; border-radius: 3px; background: #e2e8f0; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--brand-primary); transition: width 0.4s ease-out; }
+
+        #capture-area { background: #ffffff; }
     </style>
 </head>
-<body class="p-6 md:p-12">
-    <div id="app" class="max-w-7xl mx-auto">
-        <!-- Header -->
-        <nav class="flex justify-between items-center mb-16">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl font-black shadow-lg shadow-indigo-500/20">A</div>
-                <div>
-                    <h1 class="text-xl font-black tracking-tighter uppercase">Hyper Survey <span class="text-indigo-500">v4.0</span></h1>
-                    <p class="text-[10px] text-slate-500 font-mono tracking-widest uppercase">Autonomous Intelligence Diagnostic Core</p>
+<body>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-indigo-100 shadow-sm">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-md">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
                 </div>
+                <span class="font-extrabold text-slate-800 tracking-tight text-lg">Hyper Survey</span>
             </div>
-            <a href="system_b_dashboard.html" class="glass px-6 py-2 rounded-full text-[10px] font-black tracking-widest uppercase hover:bg-white/5 transition-all flex items-center gap-2">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
-                Dashboard
-            </a>
-        </nav>
-
-        <!-- Main Content -->
-        <div id="surveySelection">
-            <div class="mb-12">
-                <h2 class="text-5xl font-black tracking-tighter mb-4">전사 통합 <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">행정 진단 시스템</span></h2>
-                <p class="text-slate-400 max-w-2xl leading-relaxed">총 12개 영역에 걸친 고정밀 진단 도구입니다. 각 진단은 **Standard (70문항)** 및 **Master (120문항)** 모드를 지원하며, AI 엔진이 실시간으로 신뢰도를 분석합니다.</p>
-            </div>
-
-            <div class="survey-grid">
-                <!-- Survey Cards will be injected here -->
+            <div class="flex bg-slate-100 rounded-full p-1 border border-slate-200">
+                <button onclick="setView('pc')" id="btn-pc" class="px-4 py-1.5 rounded-full text-sm font-bold transition-all bg-white shadow-sm text-indigo-600 flex items-center">
+                    <i data-lucide="monitor" class="w-4 h-4 mr-1.5"></i> PC
+                </button>
+                <button onclick="setView('mobile')" id="btn-mobile" class="px-4 py-1.5 rounded-full text-sm font-bold transition-all text-slate-400 flex items-center">
+                    <i data-lucide="smartphone" class="w-4 h-4 mr-1.5"></i> Mobile
+                </button>
             </div>
         </div>
+    </nav>
 
-        <!-- Survey Interface (Hidden by default) -->
-        <div id="surveyInterface" class="hidden">
-            <div class="glass p-12 rounded-[3rem] relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-slate-800">
-                    <div id="progressBar" class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-500" style="width: 0%"></div>
-                </div>
-                
-                <div class="flex justify-between items-start mb-12">
-                    <div>
-                        <span id="surveyCategory" class="px-3 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg text-[10px] font-black uppercase tracking-widest mb-4 inline-block">Category</span>
-                        <h3 id="surveyTitle" class="text-3xl font-black tracking-tighter">Survey Title</h3>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-[10px] text-slate-500 font-mono mb-1">MODE: <span id="surveyMode" class="text-white font-bold">MASTER (120Q)</span></div>
-                        <div class="text-2xl font-black font-mono"><span id="currentQ">1</span><span class="text-slate-700 mx-1">/</span><span id="totalQ" class="text-slate-500">120</span></div>
-                    </div>
-                </div>
+    <div id="app-viewport" class="transition-all duration-500">
+        
+        <!-- ==================== INTRO SCREEN ==================== -->
+        <main id="screen-intro" class="max-w-2xl mx-auto py-16 px-6 fade-in">
+            <div class="text-center mb-12">
+                <span class="text-indigo-600 font-black tracking-widest text-sm mb-3 block">ADMINISTRATIVE DIAGNOSTIC</span>
+                <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight tracking-tight">신한국 총무국<br>전사 행정 통합 진단</h1>
+                <p class="text-slate-500 text-lg leading-relaxed">
+                    단순한 설문을 넘어, 우리 공동체의 건강도와<br>
+                    행정 효율성을 120개 지표로 정밀 분석합니다.<br>
+                    정직한 응답은 더 나은 미래를 만듭니다.
+                </p>
+            </div>
+            
+            <div id="survey-list" class="grid grid-cols-1 gap-4 mb-10">
+                <!-- Injected via JS -->
+            </div>
 
-                <div id="questionContainer" class="min-h-[300px] flex flex-col justify-center mb-12">
-                    <h4 id="questionText" class="text-2xl font-bold leading-snug mb-12">데이터를 불러오는 중...</h4>
-                    <div id="options" class="grid grid-cols-1 gap-4">
-                        <!-- Options injected here -->
-                    </div>
-                </div>
+            <div id="intro-action-container" class="space-y-4">
+                <!-- Injected via JS -->
+            </div>
+        </main>
 
-                <div class="flex justify-between items-center">
-                    <button onclick="prevQuestion()" class="px-8 py-4 glass rounded-2xl text-xs font-bold hover:bg-white/5 transition-all disabled:opacity-30" id="prevBtn">이전 단계</button>
-                    <div class="flex items-center gap-4 text-[10px] text-slate-500 font-mono">
-                        <span class="animate-pulse-glow">● AI 감시 모드 가동 중</span>
-                        <span>|</span>
-                        <span>익명성 보장 레벨 4</span>
+        <!-- ==================== MODE SELECTION SCREEN ==================== -->
+        <main id="screen-mode" class="hidden max-w-2xl mx-auto py-16 px-6 fade-in">
+            <div class="text-center mb-10">
+                <h2 id="mode-title" class="text-3xl font-black text-slate-800 mb-4">진단 모드 선택</h2>
+                <p class="text-slate-500">현재의 가용한 시간과 원하는 성찰의 깊이에 따라<br>두 가지 모드 중 하나를 선택해 주십시오.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 70 Questions Mode -->
+                <button onclick="selectMode(70)" class="bg-white hover:border-indigo-500 hover:shadow-2xl border-2 border-slate-100 rounded-3xl p-8 text-left transition-all group flex flex-col h-full">
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="zap" class="w-7 h-7"></i>
                     </div>
-                    <button onclick="nextQuestion()" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 rounded-2xl text-xs font-black transition-all shadow-xl shadow-indigo-500/20" id="nextBtn">다음 단계</button>
+                    <h3 class="text-2xl font-black text-slate-800 mb-2">Standard</h3>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded">총 70문항</span>
+                        <span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded">약 8분 소요</span>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">주요 패턴과 흐름을 빠르게 스캔하여 핵심 리포트를 도출합니다.</p>
+                    <div class="mt-auto text-indigo-600 font-bold flex items-center text-sm">
+                        선택하기 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </button>
+
+                <!-- 120 Questions Mode -->
+                <button onclick="selectMode(120)" class="bg-slate-900 hover:bg-black border-2 border-slate-900 rounded-3xl p-8 text-left transition-all group flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-600 opacity-20 rounded-bl-full"></div>
+                    <div class="w-14 h-14 bg-white/10 text-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layers" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-2">Master</h3>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded">총 120문항</span>
+                        <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded">약 15분 소요</span>
+                    </div>
+                    <p class="text-indigo-100 text-sm leading-relaxed mb-6">내면의 결핍부터 시스템의 맹점까지 모든 세부 지표를 정밀 분석합니다.</p>
+                    <div class="mt-auto text-indigo-300 font-bold flex items-center text-sm">
+                        선택하기 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </button>
+            </div>
+        </main>
+
+        <!-- ==================== SURVEY SCREEN ==================== -->
+        <main id="screen-survey" class="hidden max-w-2xl mx-auto py-8 md:py-12 px-6 flex flex-col min-h-[90vh]">
+            <div class="mb-8 flex flex-col items-center">
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-[10px] font-black tracking-widest rounded-full mb-3 uppercase shadow-sm" id="cat-label">PART 1</span>
+                <h2 class="text-sm font-black text-indigo-900 mb-5" id="cat-name">데이터 로딩 중...</h2>
+                <div class="w-full max-w-xs">
+                    <div class="flex justify-between text-xs font-bold text-slate-400 mb-2">
+                        <span>진행률</span>
+                        <span id="progress-text">001 / 120</span>
+                    </div>
+                    <div class="progress-indicator w-full shadow-inner">
+                        <div id="progress-bar" class="progress-fill" style="width: 0%"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Result Screen (Hidden by default) -->
-        <div id="resultScreen" class="hidden text-center py-20">
-            <div class="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center text-4xl mx-auto mb-8 animate-bounce">✨</div>
-            <h2 class="text-4xl font-black mb-4">진단이 완료되었습니다!</h2>
-            <p class="text-slate-400 mb-12 max-w-md mx-auto">귀하의 응답은 암호화되어 마스터 AI 엔진으로 전송되었습니다. 정밀 분석 리포트는 24시간 이내에 대시보드에 반영됩니다.</p>
-            <button onclick="location.reload()" class="px-12 py-4 bg-white text-black font-black rounded-2xl hover:bg-slate-200 transition-all">메인으로 돌아가기</button>
-        </div>
+            <div id="question-card" class="bg-white rounded-[2rem] shadow-2xl p-8 md:p-12 border border-indigo-50 flex-1 flex flex-col">
+                <div class="text-center mb-10">
+                    <span class="inline-block w-10 h-10 bg-slate-50 text-slate-400 rounded-full leading-10 font-black text-sm mb-6" id="q-number">1</span>
+                    <h3 id="q-text" class="text-xl md:text-2xl font-bold text-slate-800 leading-snug break-keep"></h3>
+                </div>
+
+                <div id="options-likert" class="mt-auto space-y-2">
+                    <div class="flex justify-between px-2 text-[11px] font-bold text-slate-400 mb-2">
+                        <span>전혀 아니다</span>
+                        <span>매우 그렇다</span>
+                    </div>
+                    <div class="grid grid-cols-5 gap-2 md:gap-3">
+                        <button onclick="submitAnswer(1, this)" class="option-btn py-5 md:py-6 rounded-2xl flex flex-col items-center justify-center font-black text-lg text-slate-600" data-val="1">1</button>
+                        <button onclick="submitAnswer(2, this)" class="option-btn py-5 md:py-6 rounded-2xl flex flex-col items-center justify-center font-black text-lg text-slate-600" data-val="2">2</button>
+                        <button onclick="submitAnswer(3, this)" class="option-btn py-5 md:py-6 rounded-2xl flex flex-col items-center justify-center font-black text-lg text-slate-600" data-val="3">3</button>
+                        <button onclick="submitAnswer(4, this)" class="option-btn py-5 md:py-6 rounded-2xl flex flex-col items-center justify-center font-black text-lg text-slate-600" data-val="4">4</button>
+                        <button onclick="submitAnswer(5, this)" class="option-btn py-5 md:py-6 rounded-2xl flex flex-col items-center justify-center font-black text-lg text-slate-600" data-val="5">5</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex justify-between items-center px-2">
+                <button onclick="prevQuestion()" id="btn-prev" class="text-slate-400 font-bold text-sm hover:text-indigo-600 transition-colors flex items-center py-2 px-4 -ml-4 invisible">
+                    <i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> 이전 문항
+                </button>
+                <div class="text-xs text-slate-300 font-medium" id="auto-save-text"><i data-lucide="check" class="inline w-3 h-3 mr-0.5"></i>자동 저장됨</div>
+            </div>
+        </main>
+
+        <!-- ==================== RESULTS SCREEN ==================== -->
+        <main id="screen-results" class="hidden max-w-4xl mx-auto py-10 px-4 md:px-6 pb-32 text-center">
+            <div class="bg-white rounded-[3rem] shadow-2xl p-16 border border-slate-100">
+                <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-8">
+                    <i data-lucide="check-circle" class="w-10 h-10"></i>
+                </div>
+                <h2 class="text-4xl font-black text-slate-900 mb-4">진단이 완료되었습니다!</h2>
+                <p class="text-slate-500 text-lg mb-12">귀하의 소중한 응답이 암호화되어 마스터 서버로 전송되었습니다.<br>분석 결과는 차주 행정 보고서에 반영됩니다.</p>
+                <button onclick="location.reload()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-5 px-12 rounded-2xl shadow-xl transition-all text-xl">메인으로 돌아가기</button>
+            </div>
+        </main>
     </div>
 
     <script>
         const surveys = [
-            { id: 1, title: "교회 건강도 진단", category: "HEALTH", icon: "🌱", desc: "공동체의 영적 활력과 성장 잠재력을 120개 지표로 정밀 분석합니다." },
-            { id: 2, title: "행정 효율성 감사", category: "ADMIN", icon: "⚙️", desc: "사무 업무의 자동화 수준과 프로세스 병목 구간을 70개 항목으로 진단합니다." },
-            { id: 3, title: "심정 리더십 평가", category: "LEADERSHIP", icon: "💖", desc: "참부모님 심정 문화를 바탕으로 한 리더십 역량을 심층 조사합니다." },
-            { id: 4, title: "재무 무결성 체크", category: "FINANCE", icon: "⚖️", desc: "투명하고 정직한 예산 집행 및 회계 관리 수준을 검증합니다." },
-            { id: 5, title: "차세대 교육 실태", category: "EDUCATION", icon: "🎓", desc: "성화 학생 및 청년권 교육 시스템의 실질적 효과를 측정합니다." },
-            { id: 6, title: "디지털 전환 역량", category: "DIGITAL", icon: "💻", desc: "IT 인프라 활용도 및 디지털 행정 수용 능력을 평가합니다." },
-            { id: 7, title: "글로벌 선교 전략", category: "MISSION", icon: "🌐", desc: "세계 선교 전략의 현지 적응성과 실행력을 다각도로 분석합니다." },
-            { id: 8, title: "위기 대응 회복력", category: "CRISIS", icon: "🛡️", desc: "예상치 못한 대내외적 위기 상황에서의 조직 복구 능력을 진단합니다." },
-            { id: 9, title: "지역사회 영향력", category: "SOCIAL", icon: "🤝", desc: "교회가 지역사회에 미치는 실질적인 공헌도와 인지도를 조사합니다." },
-            { id: 10, title: "공동체 결속도", category: "UNITY", icon: "🔗", desc: "식구들 간의 화합과 소속감을 측정하는 사회학적 진단 도구입니다." },
-            { id: 11, title: "복지 및 지원 수요", category: "WELFARE", icon: "🍎", desc: "현장 사역자 및 식구들의 실질적인 복지 필요도를 파악합니다." },
-            { id: 12, title: "문화 사역 역량", category: "CULTURE", icon: "🎨", desc: "예술 및 문화 활동을 통한 전도 역량과 콘텐츠 수준을 평가합니다." }
+            { id: 1, title: "교회 건강도 진단", icon: "🌱", cat: "HEALTH" },
+            { id: 2, title: "행정 효율성 감사", icon: "⚙️", cat: "ADMIN" },
+            { id: 3, title: "심정 리더십 평가", icon: "💖", cat: "LEADERSHIP" },
+            { id: 4, title: "재무 무결성 체크", icon: "⚖️", cat: "FINANCE" },
+            { id: 5, title: "차세대 교육 실태", icon: "🎓", cat: "EDUCATION" },
+            { id: 6, title: "디지털 전환 역량", icon: "💻", cat: "DIGITAL" },
+            { id: 7, title: "글로벌 선교 전략", icon: "🌐", cat: "MISSION" },
+            { id: 8, title: "위기 대응 회복력", icon: "🛡️", cat: "CRISIS" },
+            { id: 9, title: "지역사회 영향력", icon: "🤝", cat: "SOCIAL" },
+            { id: 10, title: "공동체 결속도", icon: "🔗", cat: "UNITY" },
+            { id: 11, title: "복지 및 지원 수요", icon: "🍎", cat: "WELFARE" },
+            { id: 12, title: "문화 사역 역량", icon: "🎨", cat: "CULTURE" }
         ];
 
-        let currentSurvey = null;
-        let currentStep = 1;
-        let totalSteps = 120;
-        let answers = {};
+        let state = {
+            activeSurvey: null,
+            mode: 120,
+            currentIndex: 0,
+            answers: {},
+            isFinished: false
+        };
 
-        function init() {
-            const grid = document.querySelector('.survey-grid');
-            surveys.forEach(s => {
-                const card = document.createElement('div');
-                card.className = 'glass p-8 rounded-[3.5rem] card-shine flex flex-col justify-between';
-                card.innerHTML = `
-                    <div>
-                        <div class="text-4xl mb-6">${s.icon}</div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-[9px] font-black text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded uppercase">${s.category}</span>
-                        </div>
-                        <h3 class="text-2xl font-black mb-4 tracking-tighter">${s.title}</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-8">${s.desc}</p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button onclick="startSurvey(${s.id}, 70)" class="py-3 bg-white/5 hover:bg-white/10 rounded-2xl text-[10px] font-black border border-white/5 transition-all">STANDARD (70Q)</button>
-                        <button onclick="startSurvey(${s.id}, 120)" class="py-3 bg-indigo-600 hover:bg-indigo-500 rounded-2xl text-[10px] font-black shadow-lg shadow-indigo-500/20 transition-all">MASTER (120Q)</button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+        function initApp() {
+            lucide.createIcons();
+            renderSurveyList();
         }
 
-        function startSurvey(id, qCount) {
-            currentSurvey = surveys.find(s => s.id === id);
-            totalSteps = qCount;
-            currentStep = 1;
-            
-            document.getElementById('surveySelection').classList.add('hidden');
-            document.getElementById('surveyInterface').classList.remove('hidden');
-            
-            document.getElementById('surveyTitle').innerText = currentSurvey.title;
-            document.getElementById('surveyCategory').innerText = currentSurvey.category;
-            document.getElementById('surveyMode').innerText = qCount === 120 ? 'MASTER (120Q)' : 'STANDARD (70Q)';
-            document.getElementById('totalQ').innerText = totalSteps;
-            
+        function renderSurveyList() {
+            const container = document.getElementById('survey-list');
+            surveys.forEach(s => {
+                const btn = document.createElement('button');
+                btn.onclick = () => showModeSelection(s);
+                btn.className = "w-full bg-white border border-slate-100 p-6 rounded-2xl flex items-center justify-between hover:border-indigo-500 hover:shadow-lg transition-all group";
+                btn.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <span class="text-3xl">${s.icon}</span>
+                        <div class="text-left">
+                            <h4 class="font-bold text-slate-800">${s.title}</h4>
+                            <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest">${s.cat} DIAGNOSTIC</p>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-5 h-5 text-slate-300 group-hover:text-indigo-500 transition-all"></i>
+                `;
+                container.appendChild(btn);
+            });
+            lucide.createIcons();
+        }
+
+        function setView(mode) {
+            const viewport = document.getElementById('app-viewport');
+            const btnPc = document.getElementById('btn-pc');
+            const btnMobile = document.getElementById('btn-mobile');
+            if (mode === 'mobile') {
+                viewport.classList.add('mobile-mode');
+                btnMobile.classList.add('bg-white', 'shadow-sm', 'text-indigo-600');
+                btnPc.classList.remove('bg-white', 'shadow-sm', 'text-indigo-600');
+            } else {
+                viewport.classList.remove('mobile-mode');
+                btnPc.classList.add('bg-white', 'shadow-sm', 'text-indigo-600');
+                btnMobile.classList.remove('bg-white', 'shadow-sm', 'text-indigo-600');
+            }
+        }
+
+        function showModeSelection(survey) {
+            state.activeSurvey = survey;
+            document.getElementById('mode-title').innerText = `${survey.title} 모드 선택`;
+            document.getElementById('screen-intro').classList.add('hidden');
+            document.getElementById('screen-mode').classList.remove('hidden');
+            scrollToTop();
+        }
+
+        function selectMode(m) {
+            state.mode = m;
+            document.getElementById('screen-mode').classList.add('hidden');
+            document.getElementById('screen-survey').classList.remove('hidden');
             renderQuestion();
+            scrollToTop();
         }
 
         function renderQuestion() {
-            document.getElementById('currentQ').innerText = currentStep;
-            document.getElementById('progressBar').style.width = `${(currentStep / totalSteps) * 100}%`;
+            const idx = state.currentIndex;
+            const total = state.mode;
             
-            const qData = generateQuestion(currentStep);
-            document.getElementById('questionText').innerText = qData.text;
+            document.getElementById('cat-name').innerText = state.activeSurvey.title;
+            document.getElementById('progress-bar').style.width = `${(idx / total) * 100}%`;
+            document.getElementById('progress-text').innerText = `${String(idx + 1).padStart(3, '0')} / ${total}`;
+            document.getElementById('q-number').innerText = idx + 1;
             
-            const optionsContainer = document.getElementById('options');
-            optionsContainer.innerHTML = '';
+            // Mock question generation
+            const questions = [
+                "우리 공동체는 서로의 어려움을 기꺼이 내 일처럼 돕는 분위기입니까?",
+                "행정 시스템이 업무를 효율적으로 지원하고 있다고 느끼십니까?",
+                "리더의 의사결정 과정이 투명하고 공정하게 이루어지고 있습니까?",
+                "교구 내 식구들의 고충이 본부에 신속하게 전달되고 있습니까?",
+                "현재의 예산 집행 우선순위가 선교 목적에 부합합니까?"
+            ];
+            document.getElementById('q-text').innerText = `[${state.activeSurvey.cat}] ${questions[idx % questions.length]}`;
             
-            const scales = ["전혀 그렇지 않다", "그렇지 않다", "보통이다", "그렇다", "매우 그렇다"];
-            scales.forEach((s, idx) => {
-                const btn = document.createElement('button');
-                btn.className = `p-5 rounded-2xl text-left border transition-all flex justify-between items-center group ${answers[currentStep] === idx ? 'border-indigo-500 bg-indigo-500/10' : 'border-white/5 hover:bg-white/5'}`;
-                btn.innerHTML = `
-                    <span class="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">${s}</span>
-                    <div class="w-4 h-4 rounded-full border border-slate-600 flex items-center justify-center">
-                        <div class="w-2 h-2 rounded-full bg-indigo-500 ${answers[currentStep] === idx ? 'scale-100' : 'scale-0'} transition-transform"></div>
-                    </div>
-                `;
-                btn.onclick = () => selectOption(idx);
-                optionsContainer.appendChild(btn);
+            document.querySelectorAll('.option-btn').forEach(b => {
+                b.classList.remove('selected-answer');
+                if (state.answers[idx] == b.dataset.val) b.classList.add('selected-answer');
             });
-
-            document.getElementById('prevBtn').disabled = currentStep === 1;
-            document.getElementById('nextBtn').innerText = currentStep === totalSteps ? '진단 완료' : '다음 단계';
+            
+            document.getElementById('btn-prev').style.visibility = idx > 0 ? 'visible' : 'hidden';
         }
 
-        function generateQuestion(step) {
-            // Simulated high-end questions based on category
-            const templates = {
-                HEALTH: [
-                    "공동체 내부의 소통 체계가 심정적 유대감을 기반으로 유연하게 작동하고 있습니까?",
-                    "신규 식구 정착을 위한 교육 프로그램이 체계적으로 운영되고 있습니까?",
-                    "주일 예배의 영적 분위기가 구성원들의 삶에 실질적인 변화를 이끌어내고 있습니까?",
-                    "각 부서간의 협력 체계가 칸막이 현상 없이 원활하게 통합되어 있습니까?"
-                ],
-                ADMIN: [
-                    "현재 사용 중인 행정 시스템이 수동 작업을 획기적으로 줄여주고 있습니까?",
-                    "보고서 작성 및 승인 절차가 디지털 도구를 통해 실시간으로 이루어지고 있습니까?",
-                    "데이터 기반의 의사결정 체계가 현장에서 실제로 적용되고 있습니까?",
-                    "중복된 행정 업무를 식별하고 제거하기 위한 정기적인 리뷰가 있습니까?"
-                ]
-            };
-            const list = templates[currentSurvey.category] || templates.HEALTH;
-            return { text: `[문항 ${step}] ${list[(step - 1) % list.length]}` };
-        }
-
-        function selectOption(idx) {
-            answers[currentStep] = idx;
-            renderQuestion();
-            // Auto next after selection for better flow
-            setTimeout(nextQuestion, 300);
-        }
-
-        function nextQuestion() {
-            if (currentStep < totalSteps) {
-                currentStep++;
-                renderQuestion();
-            } else {
-                completeSurvey();
-            }
+        function submitAnswer(val, btn) {
+            state.answers[state.currentIndex] = val;
+            btn.classList.add('selected-answer');
+            
+            setTimeout(() => {
+                if (state.currentIndex < state.mode - 1) {
+                    state.currentIndex++;
+                    renderQuestion();
+                    scrollToTop();
+                } else {
+                    showResults();
+                }
+            }, 300);
         }
 
         function prevQuestion() {
-            if (currentStep > 1) {
-                currentStep--;
+            if (state.currentIndex > 0) {
+                state.currentIndex--;
                 renderQuestion();
             }
         }
 
-        function completeSurvey() {
-            document.getElementById('surveyInterface').classList.add('hidden');
-            document.getElementById('resultScreen').classList.remove('hidden');
-            
-            // Logic to save results to server/JSON would go here
-            console.log("SURVEY COMPLETED", {
-                surveyId: currentSurvey.id,
-                mode: totalSteps,
-                responses: answers
-            });
+        function showResults() {
+            document.getElementById('screen-survey').classList.add('hidden');
+            document.getElementById('screen-results').classList.remove('hidden');
+            scrollToTop();
         }
 
-        init();
+        function scrollToTop() {
+            const viewport = document.getElementById('app-viewport');
+            if(viewport.classList.contains('mobile-mode')) viewport.scrollTop = 0;
+            else window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        initApp();
     </script>
 </body>
 </html>

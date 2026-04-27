@@ -3,113 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>목회유형 진단도구 | 신한국 총무국</title>
+    <title>MINISTRY TEST | 신한국 총무국</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: #020617;
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #020617; 
             color: white;
-            font-family: 'Noto Sans KR', sans-serif;
-            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 100%, rgba(30, 41, 59, 1) 0%, rgba(2, 6, 23, 1) 100%);
         }
-        .glass {
-            background: rgba(15, 23, 42, 0.6);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, #60a5fa, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
         }
         .option-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .option-card:hover {
-            transform: translateY(-5px);
-            background: rgba(59, 130, 246, 0.1);
-            border-color: rgba(59, 130, 246, 0.5);
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+            transform: scale(1.02);
         }
         .option-card.selected {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: #3b82f6;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-        }
-        @keyframes progress {
-            from { width: 0; }
-            to { width: var(--progress); }
+            background: rgba(99, 102, 241, 0.2);
+            border-color: #6366f1;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
         }
         .progress-bar {
             height: 4px;
-            background: #3b82f6;
-            box-shadow: 0 0 10px #3b82f6;
-            transition: width 0.5s ease;
+            background: #6366f1;
+            box-shadow: 0 0 15px #6366f1;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #818cf8, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="p-8">
-    <div class="max-w-4xl mx-auto">
+<body class="min-h-screen p-8 flex flex-col items-center justify-center">
+
+    <div class="w-full max-w-4xl">
         <!-- Header -->
-        <header class="flex justify-between items-center mb-12">
+        <header class="flex justify-between items-end mb-16 px-4">
             <div>
-                <h1 class="text-3xl font-black gradient-text mb-2">MINISTRY TYPE ASSESSMENT</h1>
-                <p class="text-slate-400 text-sm">신한국 총무국 공식 목회 역량 진단 엔진 v1.0</p>
+                <a href="system_b_dashboard.html" class="flex items-center gap-2 text-slate-500 hover:text-white transition-all mb-4 text-xs font-bold uppercase tracking-widest">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Dashboard
+                </a>
+                <h1 class="text-4xl font-black tracking-tighter">목회유형 <span class="gradient-text">진단 도구</span></h1>
             </div>
             <div class="text-right">
-                <span id="qCount" class="text-xs font-mono text-blue-400 uppercase tracking-widest">Question 1 of 12</span>
-                <div class="w-48 h-1 bg-slate-800 mt-2 rounded-full overflow-hidden">
+                <span id="qCount" class="text-[10px] font-black text-indigo-400 uppercase tracking-[0.2em]">Step 1 / 12</span>
+                <div class="w-48 h-1 bg-white/10 mt-3 rounded-full overflow-hidden">
                     <div id="progressBar" class="progress-bar" style="width: 8.33%"></div>
                 </div>
             </div>
         </header>
 
-        <!-- Quiz Container -->
-        <main id="quizContainer" class="glass p-12 rounded-[3rem] min-h-[500px] relative overflow-hidden">
-            <div id="questionView">
-                <div id="questionTag" class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-[10px] font-bold text-blue-400 mb-6 uppercase tracking-widest">Leadership Focus</div>
-                <h2 id="questionText" class="text-2xl font-bold mb-12 leading-relaxed">목회 활동 중 당신이 가장 보람을 느끼는 순간은 언제입니까?</h2>
+        <!-- Main Content -->
+        <main id="quizContainer" class="glass-card p-12 md:p-20 rounded-[4rem] min-h-[600px] relative">
+            <div id="questionView" class="fade-in">
+                <div id="questionTag" class="inline-block px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-[10px] font-black text-indigo-400 mb-8 uppercase tracking-widest">Leadership Focus</div>
+                <h2 id="questionText" class="text-2xl md:text-3xl font-bold mb-16 leading-tight">목회 활동 중 당신이 가장 보람을 느끼는 순간은 언제입니까?</h2>
                 
-                <div class="grid grid-cols-1 gap-4" id="options">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="options">
                     <!-- Options injected by JS -->
                 </div>
 
-                <div class="mt-12 flex justify-between items-center">
-                    <button onclick="prevQuestion()" class="px-6 py-3 text-slate-500 hover:text-white transition-colors text-sm font-bold">이전 단계</button>
-                    <button onclick="nextQuestion()" id="nextBtn" class="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-2xl text-sm font-black transition-all shadow-lg shadow-blue-900/20 disabled:opacity-50" disabled>다음 질문</button>
+                <div class="mt-20 flex justify-between items-center">
+                    <button onclick="prevQuestion()" class="text-slate-500 hover:text-white transition-colors text-xs font-black uppercase tracking-widest">Previous</button>
+                    <button onclick="nextQuestion()" id="nextBtn" class="px-10 py-4 bg-white text-slate-900 rounded-2xl text-sm font-black transition-all hover:bg-indigo-50 disabled:opacity-30" disabled>Next Step</button>
                 </div>
             </div>
 
             <!-- Result View (Hidden initially) -->
-            <div id="resultView" class="hidden text-center py-8">
-                <div class="w-32 h-32 bg-blue-500/20 rounded-full flex items-center justify-center text-5xl mx-auto mb-8 animate-bounce">📊</div>
-                <h2 class="text-4xl font-black mb-4">진단 결과</h2>
-                <p class="text-slate-400 mb-12">귀하의 핵심 목회 스타일은 다음과 같습니다.</p>
+            <div id="resultView" class="hidden text-center py-8 fade-in">
+                <div class="w-24 h-24 bg-indigo-600 text-white rounded-[2rem] flex items-center justify-center text-4xl mx-auto mb-10 shadow-2xl shadow-indigo-500/40">
+                    <i data-lucide="award" class="w-12 h-12"></i>
+                </div>
+                <h2 class="text-4xl font-black mb-4">심층 진단 결과</h2>
+                <p class="text-slate-400 mb-16 font-medium">귀하의 핵심 목회 스타일 및 역량 지표입니다.</p>
                 
-                <div id="resultType" class="text-6xl font-black gradient-text mb-6">지도자형 (Leader)</div>
-                <p id="resultDesc" class="max-w-2xl mx-auto text-slate-300 leading-relaxed mb-12">
+                <div id="resultType" class="text-6xl font-black gradient-text mb-8">지도자형 (Leader)</div>
+                <p id="resultDesc" class="max-w-2xl mx-auto text-slate-400 leading-relaxed mb-16 text-lg">
                     비전 제시와 조직 이끌기에 탁월한 능력을 보유하고 계십니다. 
                     강력한 설교와 방향성을 통해 공동체를 역동적으로 변화시키는 스타일입니다.
                 </p>
 
-                <div class="grid grid-cols-4 gap-4 mb-12" id="scoreBars">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16" id="scoreBars">
                     <!-- Score bars injected by JS -->
                 </div>
 
                 <div class="flex justify-center gap-4">
-                    <button onclick="location.reload()" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-2xl text-sm font-bold transition-all">다시 검사하기</button>
-                    <button onclick="saveResult()" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 rounded-2xl text-sm font-black transition-all">결과 저장 및 보고</button>
+                    <button onclick="location.reload()" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-2xl text-sm font-bold transition-all">다시 진단</button>
+                    <button onclick="saveResult()" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 rounded-2xl text-sm font-black transition-all shadow-xl shadow-indigo-500/20">데이터베이스 저장</button>
                 </div>
             </div>
         </main>
 
-        <footer class="mt-8 text-center text-slate-600 text-[10px] font-mono tracking-tighter">
-            © 2026 NEW KOREA GENERAL AFFAIRS BUREAU | HYPER AUTOMATION SYSTEM
+        <footer class="mt-12 text-center opacity-30">
+            <div class="text-[10px] font-mono tracking-widest uppercase">New Korea Strategic Admin Core v6.0</div>
         </footer>
     </div>
 
     <script>
+        lucide.createIcons();
+
         const questions = [
             {
                 tag: "Core Passion",
@@ -241,7 +247,7 @@
             const qData = questions[currentQ];
             document.getElementById('questionTag').innerText = qData.tag;
             document.getElementById('questionText').innerText = qData.q;
-            document.getElementById('qCount').innerText = `Question ${currentQ + 1} of ${questions.length}`;
+            document.getElementById('qCount').innerText = `Step ${currentQ + 1} / ${questions.length}`;
             document.getElementById('progressBar').style.width = `${((currentQ + 1) / questions.length) * 100}%`;
 
             const optionsDiv = document.getElementById('options');
@@ -249,19 +255,20 @@
             
             qData.options.forEach((opt, idx) => {
                 const card = document.createElement('div');
-                card.className = `option-card glass p-6 rounded-2xl border border-white/5 flex items-center gap-4 ${answers[currentQ] === idx ? 'selected' : ''}`;
+                card.className = `option-card glass-card p-6 rounded-3xl flex items-center gap-4 ${answers[currentQ] === idx ? 'selected' : ''}`;
                 card.onclick = () => selectOption(idx);
                 card.innerHTML = `
-                    <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-black text-xs">
+                    <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xs">
                         ${String.fromCharCode(65 + idx)}
                     </div>
-                    <span class="text-sm font-medium">${opt.text}</span>
+                    <span class="text-sm font-bold text-slate-300">${opt.text}</span>
                 `;
                 optionsDiv.appendChild(card);
             });
 
             document.getElementById('nextBtn').disabled = answers[currentQ] === undefined;
-            document.getElementById('nextBtn').innerText = currentQ === questions.length - 1 ? '결과 확인' : '다음 질문';
+            document.getElementById('nextBtn').innerText = currentQ === questions.length - 1 ? 'Finish Assessment' : 'Next Step';
+            lucide.createIcons();
         }
 
         function selectOption(idx) {
@@ -286,7 +293,6 @@
         }
 
         function showResults() {
-            // Calculate scores
             scores = { Pioneer: 0, Manager: 0, Parent: 0, Leader: 0 };
             answers.forEach((ansIdx, qIdx) => {
                 const type = questions[qIdx].options[ansIdx].type;
@@ -296,15 +302,14 @@
             document.getElementById('questionView').classList.add('hidden');
             document.getElementById('resultView').classList.remove('hidden');
 
-            // Find top type
             const sortedTypes = Object.entries(scores).sort((a, b) => b[1] - a[1]);
             const topType = sortedTypes[0][0];
             
             const typeNames = {
-                Pioneer: "개척형 (Pioneer)",
-                Manager: "관리형 (Manager)",
-                Parent: "심정형 (Parent)",
-                Leader: "지도자형 (Leader)"
+                Pioneer: "혁신 개척자 (Pioneer)",
+                Manager: "전략 관리자 (Manager)",
+                Parent: "심정 치유자 (Parent)",
+                Leader: "비전 지도자 (Leader)"
             };
 
             const typeDescs = {
@@ -317,28 +322,28 @@
             document.getElementById('resultType').innerText = typeNames[topType];
             document.getElementById('resultDesc').innerText = typeDescs[topType];
 
-            // Render score bars
             const scoreBarsDiv = document.getElementById('scoreBars');
             scoreBarsDiv.innerHTML = '';
             Object.entries(scores).forEach(([type, score]) => {
                 const pct = (score / questions.length) * 100;
                 const barContainer = document.createElement('div');
-                barContainer.className = "space-y-2";
+                barContainer.className = "space-y-3";
                 barContainer.innerHTML = `
-                    <div class="flex justify-between text-[10px] font-bold uppercase text-slate-500">
+                    <div class="flex justify-between text-[10px] font-black uppercase text-slate-500 tracking-widest">
                         <span>${type}</span>
                         <span>${Math.round(pct)}%</span>
                     </div>
-                    <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-                        <div class="h-full bg-blue-500 shadow-[0_0_10px_#3b82f6]" style="width: ${pct}%"></div>
+                    <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" style="width: ${pct}%"></div>
                     </div>
                 `;
                 scoreBarsDiv.appendChild(barContainer);
             });
+            lucide.createIcons();
         }
 
         function saveResult() {
-            alert('진단 결과가 마스터 데이터베이스에 안전하게 기록되었습니다.');
+            alert('진단 결과가 전략 시스템에 안전하게 기록되었습니다.');
             window.location.href = 'system_b_dashboard.html';
         }
 

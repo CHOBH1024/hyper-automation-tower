@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATIONAL COMMAND CENTER | 신한국 총무국</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #020617; 
+            color: #f1f5f9;
+            background-image: radial-gradient(circle at 50% 0%, rgba(30, 58, 138, 0.2) 0%, rgba(2, 6, 23, 1) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .status-online { background: #10b981; box-shadow: 0 0 10px #10b981; }
+        .status-pending { background: #f59e0b; box-shadow: 0 0 10px #f59e0b; }
+        .status-offline { background: #ef4444; box-shadow: 0 0 10px #ef4444; }
+        
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: origin-center;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-8">
+
+    <div class="max-w-[1600px] mx-auto">
+        <!-- Header -->
+        <header class="flex justify-between items-end mb-12">
+            <div>
+                <a href="system_b_dashboard.html" class="flex items-center gap-2 text-slate-500 hover:text-white transition-all mb-4 text-[10px] font-black uppercase tracking-widest">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Admin Hub
+                </a>
+                <h1 class="text-4xl font-black tracking-tighter flex items-center gap-4">
+                    NATIONAL <span class="text-blue-500 italic">COMMAND CENTER</span>
+                    <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-[10px] font-black text-blue-400 uppercase tracking-widest animate-pulse">Live Syncing</span>
+                </h1>
+            </div>
+            <div class="flex gap-8 text-right">
+                <div>
+                    <p class="text-[10px] font-black text-slate-500 uppercase mb-1">Total Submissions</p>
+                    <p class="text-2xl font-black text-white" id="stat-total">0 / 200</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-black text-slate-500 uppercase mb-1">Global Health</p>
+                    <p class="text-2xl font-black text-emerald-400">92%</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-12 gap-8">
+            <!-- Left: Diocese Map & List -->
+            <div class="col-span-12 lg:col-span-8 space-y-8">
+                <div class="glass-card p-10 rounded-[3rem] relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-10">
+                        <h2 class="text-xl font-bold flex items-center gap-3">
+                            <i data-lucide="map-pin" class="text-blue-500"></i>
+                            전국 교구 보고 수신 현황
+                        </h2>
+                        <div class="flex gap-4">
+                            <input type="text" id="searchChurch" placeholder="교회명 검색..." class="bg-white/5 border border-white/10 rounded-2xl px-6 py-2 text-sm focus:outline-none focus:border-blue-500 transition-all">
+                            <button onclick="refreshData()" class="p-3 bg-blue-600 rounded-2xl hover:bg-blue-500 transition-all">
+                                <i data-lucide="refresh-cw" class="w-4 h-4" id="refresh-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="diocese-grid">
+                        <!-- Diocese Cards -->
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="glass-card p-10 rounded-[3rem]">
+                    <h2 class="text-xl font-bold mb-8 flex items-center gap-3">
+                        <i data-lucide="activity" class="text-emerald-500"></i>
+                        실시간 수신 로그
+                    </h2>
+                    <div class="space-y-4" id="activity-log">
+                        <!-- Log items -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Insights & Master Aggregation -->
+            <div class="col-span-12 lg:col-span-4 space-y-8">
+                <div class="glass-card p-8 rounded-[3rem] border-blue-500/20 bg-blue-500/5">
+                    <h3 class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-6">Master Aggregator</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-8">
+                        200여 개 교회로부터 수집된 데이터를 AI가 실시간으로 병합하고 있습니다. 현재 <b>102건</b>의 데이터가 마스터 리포트에 통합되었습니다.
+                    </p>
+                    <button onclick="window.location.href='weekly_master.html'" class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-black rounded-2xl transition-all shadow-xl shadow-blue-900/40 flex items-center justify-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4"></i> 최종 통합 보고서 생성
+                    </button>
+                </div>
+
+                <div class="glass-card p-8 rounded-[3rem]">
+                    <h3 class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Urgent Alerts</h3>
+                    <div class="space-y-4" id="alerts">
+                        <div class="p-4 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-start gap-4">
+                            <i data-lucide="alert-triangle" class="text-rose-500 w-5 h-5 shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-xs font-bold text-rose-500 mb-1">인천 교구 - 지연 위험</p>
+                                <p class="text-[10px] text-slate-400">5개 교회가 보고 마감 기한을 넘겼습니다. 자동 독려 메시지가 발송되었습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        let masterData = [];
+
+        async function loadData() {
+            try {
+                const res = await fetch('data/MASTER_COLLECTION.json');
+                masterData = await res.json();
+                renderUI();
+            } catch (err) {
+                console.error("Data load failed", err);
+            }
+        }
+
+        function renderUI() {
+            document.getElementById('stat-total').innerText = `${masterData.length} / 200`;
+
+            const dioceses = ["Seoul", "Incheon", "Gyeonggi_North", "Gyeonggi_South", "Gangwon", "Chungbuk", "Chungnam", "Jeonbuk", "Jeonnam", "Gyeongbuk", "Gyeongnam", "Busan", "Daegu", "Jeju", "기타"];
+            const grid = document.getElementById('diocese-grid');
+            grid.innerHTML = '';
+
+            dioceses.forEach(name => {
+                const count = masterData.filter(d => d.diocese === name).length;
+                const pct = Math.round((count / 15) * 100); // Assuming 15 churches per diocese for demo
+
+                const card = document.createElement('div');
+                card.className = "glass-card p-6 rounded-[2rem] hover:bg-white/5 cursor-pointer";
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] font-black uppercase text-slate-500">${name}</span>
+                        <span class="status-dot ${count > 5 ? 'status-online' : 'status-pending'}"></span>
+                    </div>
+                    <div class="text-xl font-black mb-1">${count}</div>
+                    <div class="text-[10px] text-slate-400">Reports Received</div>
+                    <div class="w-full h-1 bg-white/5 mt-4 rounded-full overflow-hidden">
+                        <div class="h-full bg-blue-500" style="width: ${pct}%"></div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            const log = document.getElementById('activity-log');
+            log.innerHTML = '';
+            masterData.slice(0, 5).forEach(item => {
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between p-4 bg-white/2 border border-white/5 rounded-2xl";
+                div.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
+                            <i data-lucide="check" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold">${item.church}</p>
+                            <p class="text-[10px] text-slate-500">${item.diocese} • ${item.date}</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-mono text-slate-500">RECEIVED</span>
+                `;
+                log.appendChild(div);
+            });
+            lucide.createIcons();
+        }
+
+        async function refreshData() {
+            const icon = document.getElementById('refresh-icon');
+            icon.classList.add('animate-spin');
+            // In a real app, we would trigger the PS1 script via a backend here
+            setTimeout(() => {
+                loadData();
+                icon.classList.remove('animate-spin');
+            }, 1000);
+        }
+
+        loadData();
+    </script>
+</body>
+</html>

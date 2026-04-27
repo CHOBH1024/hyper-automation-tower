@@ -3,116 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPER CORE | 신한국 총무국</title>
+    <title>HYPER CORE | SYSTEM DEPLOYMENT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Pretendard', sans-serif; 
-            background-color: #020617; 
-            color: white;
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.15) 0%, transparent 50%);
-        }
-        .core-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .core-card:hover {
-            border-color: rgba(99, 102, 241, 0.4);
-            transform: translateY(-8px);
-            background: rgba(15, 23, 42, 0.8);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .core-card:hover .icon-box {
-            background: #4f46e5;
-            color: white;
-            transform: scale(1.1) rotate(5deg);
-        }
-        .icon-box {
-            transition: all 0.4s ease;
-        }
-        .glow-text {
-            text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
-        }
+        body { font-family: 'Pretendard', sans-serif; background-color: #020617; color: white; overflow: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glow { box-shadow: 0 0 30px rgba(99, 102, 241, 0.3); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-8">
-    
-    <!-- Minimal Header -->
-    <header class="text-center mb-16 animate-fade-in">
-        <div class="inline-block px-4 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-[10px] font-black tracking-[0.3em] text-indigo-400 uppercase mb-6">
-            Hyper Administration Core v5.0
+<body class="min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-xl w-full text-center">
+        <div class="mb-12 flex justify-center">
+            <div class="w-20 h-20 bg-indigo-600 rounded-[2rem] flex items-center justify-center glow animate-bounce">
+                <i data-lucide="rocket" class="w-10 h-10"></i>
+            </div>
         </div>
-        <h1 class="text-5xl md:text-6xl font-black tracking-tighter glow-text">핵심 행정 <span class="text-indigo-500">컨트롤 타워</span></h1>
-        <p class="text-slate-500 mt-6 text-lg font-medium">불필요한 요소를 배제한 전사 핵심 업무 시스템입니다.</p>
-    </header>
-
-    <!-- Core 5 Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 w-full max-w-7xl">
+        <h1 class="text-4xl font-black mb-6 tracking-tighter">시스템 배포 완료</h1>
+        <p class="text-slate-400 mb-12 leading-relaxed">전략 행정 통합 관제 시스템의 모든 모듈이 로컬 서버에 성공적으로 배포되었습니다. 아래 버튼을 눌러 메인 대시보드로 진입하십시오.</p>
         
-        <!-- 1. Surveys -->
-        <a href="survey_center.html" class="core-card p-10 rounded-[3rem] flex flex-col items-center text-center group">
-            <div class="icon-box w-20 h-20 bg-slate-800 rounded-[2rem] flex items-center justify-center text-slate-400 mb-8">
-                <i data-lucide="clipboard-check" class="w-10 h-10"></i>
-            </div>
-            <h3 class="text-xl font-black mb-4">행정 설문</h3>
-            <p class="text-xs text-slate-500 leading-relaxed font-medium">12개 영역 전사 데이터 수집</p>
+        <a href="system_b_dashboard.html" class="block w-full py-5 bg-white text-slate-900 font-black rounded-3xl hover:bg-slate-200 transition-all shadow-2xl mb-4">
+            시스템 시작하기 (Launch Dashboard)
         </a>
-
-        <!-- 2. Diagnostics -->
-        <a href="survey_center.html" class="core-card p-10 rounded-[3rem] flex flex-col items-center text-center group">
-            <div class="icon-box w-20 h-20 bg-slate-800 rounded-[2rem] flex items-center justify-center text-slate-400 mb-8">
-                <i data-lucide="activity" class="w-10 h-10"></i>
-            </div>
-            <h3 class="text-xl font-black mb-4">심층 진단</h3>
-            <p class="text-xs text-slate-500 leading-relaxed font-medium">70/120문항 고정밀 분석</p>
-        </a>
-
-        <!-- 3. Ministry Type -->
-        <a href="https://make-it-mine-35.lovable.app/" target="_blank" class="core-card p-10 rounded-[3rem] flex flex-col items-center text-center group">
-            <div class="icon-box w-20 h-20 bg-slate-800 rounded-[2rem] flex items-center justify-center text-slate-400 mb-8">
-                <i data-lucide="user-check" class="w-10 h-10"></i>
-            </div>
-            <h3 class="text-xl font-black mb-4">목회유형 검사</h3>
-            <p class="text-xs text-slate-500 leading-relaxed font-medium">스타일 분석 (외부 연결)</p>
-        </a>
-
-        <!-- 4. Workshop -->
-        <a href="workshop_hub.html" class="core-card p-10 rounded-[3rem] flex flex-col items-center text-center group">
-            <div class="icon-box w-20 h-20 bg-slate-800 rounded-[2rem] flex items-center justify-center text-slate-400 mb-8">
-                <i data-lucide="graduation-cap" class="w-10 h-10"></i>
-            </div>
-            <h3 class="text-xl font-black mb-4">사무장 워크숍</h3>
-            <p class="text-xs text-slate-500 leading-relaxed font-medium">역량 강화 및 리소스 허브</p>
-        </a>
-
-        <!-- 5. Weekly Report -->
-        <a href="weekly_report.html" class="core-card p-10 rounded-[3rem] flex flex-col items-center text-center group">
-            <div class="icon-box w-20 h-20 bg-slate-800 rounded-[2rem] flex items-center justify-center text-slate-400 mb-8">
-                <i data-lucide="file-text" class="w-10 h-10"></i>
-            </div>
-            <h3 class="text-xl font-black mb-4">주간 보고서</h3>
-            <p class="text-xs text-slate-500 leading-relaxed font-medium">자동 취합 및 PDF 생성</p>
-        </a>
-
-    </div>
-
-    <!-- Footer Status -->
-    <footer class="mt-24 flex items-center gap-8 opacity-40">
-        <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-            <span class="text-[10px] font-bold uppercase tracking-widest">Master Engine Online</span>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <a href="national_command_center.html" class="glass p-4 rounded-2xl text-xs font-bold text-slate-400 hover:text-white transition-all">
+                <i data-lucide="map" class="w-4 h-4 mx-auto mb-2"></i> 관제 센터 바로가기
+            </a>
+            <a href="weekly_master.html" class="glass p-4 rounded-2xl text-xs font-bold text-slate-400 hover:text-white transition-all">
+                <i data-lucide="file-text" class="w-4 h-4 mx-auto mb-2"></i> 보고서 엔진 실행
+            </a>
         </div>
-        <div class="w-[1px] h-4 bg-slate-800"></div>
-        <div class="text-[10px] font-mono">신한국 총무국 하이퍼 자동화 시스템</div>
-    </footer>
 
-    <script>
-        lucide.createIcons();
-    </script>
+        <p class="mt-12 text-[10px] font-bold text-slate-600 uppercase tracking-widest">Local Deployment Path: C:\Users\note\.gemini\antigravity\scratch</p>
+    </div>
+    <script>lucide.createIcons();</script>
 </body>
 </html>

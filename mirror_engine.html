@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIRROR INSIGHT | 지능형 행정 시스템</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background-color: #020617; color: #f8fafc; overflow-x: hidden; }
+        .glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #6366f1, #a855f7); transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .option-card { cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .option-card:hover { transform: translateY(-2px); background: rgba(99, 102, 241, 0.1); border-color: rgba(99, 102, 241, 0.3); }
+        .option-card.selected { background: #6366f1; border-color: #6366f1; color: white; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+
+    <div id="survey-container" class="w-full max-w-2xl">
+        <!-- Header -->
+        <header class="mb-12 text-center">
+            <a href="mirror_insight_portal.html" class="inline-flex items-center gap-2 text-slate-500 hover:text-white transition-all mb-6 text-xs font-bold">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO PORTAL
+            </a>
+            <h1 id="mirror-title" class="text-3xl font-black mb-2 tracking-tighter">MIRROR <span class="gradient-text">INSIGHT</span></h1>
+            <p id="mirror-subtitle" class="text-slate-400 text-sm">진단 모듈을 초기화하고 있습니다...</p>
+        </header>
+
+        <!-- Progress -->
+        <div class="mb-12 space-y-3">
+            <div class="flex justify-between text-[10px] font-black tracking-widest text-slate-500 uppercase">
+                <span id="progress-text">Question 1 of 20</span>
+                <span id="progress-percent">0%</span>
+            </div>
+            <div class="progress-bar"><div id="progress-fill" class="progress-fill" style="width: 0%"></div></div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="glass p-10 rounded-[3rem] shadow-2xl relative overflow-hidden mb-8">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+            <h2 id="question-text" class="text-xl font-bold leading-snug mb-10">질문을 불러오는 중입니다...</h2>
+            
+            <div class="space-y-3" id="options-container">
+                <!-- Options injected here -->
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center">
+            <button id="prev-btn" onclick="prevQuestion()" class="px-8 py-4 text-slate-500 font-bold hover:text-white transition-all opacity-0 pointer-events-none">이전</button>
+            <button id="next-btn" onclick="nextQuestion()" class="px-10 py-4 bg-indigo-600 hover:bg-indigo-500 rounded-2xl text-white font-black shadow-lg shadow-indigo-900/40 transition-all opacity-0 pointer-events-none">다음 질문</button>
+        </div>
+    </div>
+
+    <!-- Result Screen (Hidden) -->
+    <div id="result-container" class="w-full max-w-4xl hidden animate-in fade-in zoom-in duration-700">
+        <div class="glass p-12 rounded-[4rem] text-center mb-8">
+            <h2 class="text-4xl font-black mb-4">진단 결과 <span class="gradient-text">REPORT</span></h2>
+            <p class="text-slate-400 mb-12">당신의 내면적 가치와 행정적 역량을 분석한 결과입니다.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="relative flex justify-center">
+                    <canvas id="resultChart" class="max-w-[300px]"></canvas>
+                </div>
+                <div class="text-left space-y-6">
+                    <div>
+                        <h3 id="result-type" class="text-2xl font-black text-indigo-400 mb-2">집중형 리더십 (Focus Leader)</h3>
+                        <p id="result-desc" class="text-slate-400 text-sm leading-relaxed">
+                            당신은 목표 지향적이며 체계적인 행정 능력을 갖추고 있습니다. 
+                            주변의 피드백을 수용하는 능력을 보완한다면 더욱 강력한 조직적 성장을 이끌 수 있습니다.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-3xl border border-white/5">
+                        <h4 class="text-[10px] font-black uppercase text-indigo-400 tracking-widest mb-3">AI Recommendations</h4>
+                        <ul class="text-xs text-slate-300 space-y-2">
+                            <li>• 정기적인 팀원 1:1 면담을 통한 소통 강화</li>
+                            <li>• 디지털 행정 툴 도입을 통한 업무 효율화 제안</li>
+                            <li>• Mirror-V 모듈을 통한 라이프스타일 균형 진단 추천</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-12 border-t border-white/5 flex justify-center gap-4">
+                <button onclick="location.reload()" class="px-8 py-4 bg-white/5 hover:bg-white/10 rounded-2xl text-xs font-bold transition-all">다시 검사하기</button>
+                <button onclick="window.location.href='mirror_insight_portal.html'" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 rounded-2xl text-xs font-black transition-all">포털로 돌아가기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const mirrorType = urlParams.get('type') || 'I';
+
+        const config = {
+            'I': { title: 'I-Mirror', subtitle: '소명 및 내면 가치 진단', color: '#6366f1' },
+            'L': { title: 'L-Mirror', subtitle: '리더십 및 강연/설교 진단', color: '#10b981' },
+            'A': { title: 'A-Mirror', subtitle: '진정성 및 자기 일치도 진단', color: '#f59e0b' },
+            'S': { title: 'S-Mirror', subtitle: '사회적 감수성 진단', color: '#ec4899' },
+            'G': { title: 'G-Mirror', subtitle: '세대 공감 및 소통 진단', color: '#8b5cf6' },
+            'C': { title: 'C-Mirror', subtitle: '상담자/전문가 역량 진단', color: '#06b6d4' },
+            'P': { title: 'P-Mirror', subtitle: '개인 역량 및 매력도 진단', color: '#f97316' },
+            'V': { title: 'V-Mirror', subtitle: '취향 및 라이프스타일 진단', color: '#14b8a6' },
+            'F': { title: 'F-Mirror', subtitle: '신앙 및 영성 진단', color: '#ef4444' }
+        };
+
+        const currentConfig = config[mirrorType] || config['I'];
+        document.getElementById('mirror-title').innerHTML = `MIRROR <span style="color:${currentConfig.color}">${mirrorType}</span>`;
+        document.getElementById('mirror-subtitle').innerText = currentConfig.subtitle;
+
+        // Sample Questions (Unified)
+        const questions = [
+            "나는 현재 내가 하는 일이 단순한 직업 이상의 가치가 있다고 믿는다.",
+            "조직의 목표를 달성하기 위해 개인의 희생이 때로는 필요하다고 생각한다.",
+            "나는 새로운 변화에 직면했을 때 두려움보다 호기심이 앞선다.",
+            "나의 의사결정은 감정보다는 객관적 데이터에 근거하는 편이다.",
+            "나는 타인의 감정을 읽고 공감하는 능력이 탁월하다고 느낀다.",
+            "나는 업무의 결과보다 과정에서의 정직함이 더 중요하다고 믿는다.",
+            "조직 내 갈등이 발생했을 때, 나는 적극적으로 중재에 나선다.",
+            "나는 장기적인 비전보다 당장 눈앞의 문제를 해결하는 데 능숙하다.",
+            "나는 나의 지식과 기술을 타인과 공유하는 것에서 보람을 느낀다.",
+            "나는 스트레스 상황에서도 평정심을 유지하며 논리적으로 사고한다."
+        ];
+
+        let currentIdx = 0;
+        let answers = new Array(questions.length).fill(null);
+
+        function renderQuestion() {
+            document.getElementById('question-text').innerText = questions[currentIdx];
+            document.getElementById('progress-text').innerText = `Question ${currentIdx + 1} of ${questions.length}`;
+            const pct = Math.round(((currentIdx) / questions.length) * 100);
+            document.getElementById('progress-percent').innerText = `${pct}%`;
+            document.getElementById('progress-fill').style.width = `${pct}%`;
+
+            const options = ["전혀 그렇지 않다", "그렇지 않다", "보통이다", "그렇다", "매우 그렇다"];
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+            
+            options.forEach((opt, i) => {
+                const card = document.createElement('div');
+                card.className = `option-card p-6 rounded-2xl border border-white/10 text-sm font-bold flex items-center gap-4 ${answers[currentIdx] === i ? 'selected' : ''}`;
+                card.innerHTML = `<span class="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center text-[10px]">${i+1}</span> ${opt}`;
+                card.onclick = () => selectOption(i);
+                container.appendChild(card);
+            });
+
+            // Nav visibility
+            document.getElementById('prev-btn').style.opacity = currentIdx > 0 ? '1' : '0';
+            document.getElementById('prev-btn').style.pointerEvents = currentIdx > 0 ? 'auto' : 'none';
+            document.getElementById('next-btn').style.opacity = answers[currentIdx] !== null ? '1' : '0';
+            document.getElementById('next-btn').style.pointerEvents = answers[currentIdx] !== null ? 'auto' : 'none';
+            document.getElementById('next-btn').innerText = currentIdx === questions.length - 1 ? '결과 보기' : '다음 질문';
+        }
+
+        function selectOption(val) {
+            answers[currentIdx] = val;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentIdx < questions.length - 1) {
+                currentIdx++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIdx > 0) {
+                currentIdx--;
+                renderQuestion();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('survey-container').classList.add('hidden');
+            document.getElementById('result-container').classList.remove('hidden');
+            
+            // Random result data for demo
+            const labels = ['전략성', '공감능력', '성실성', '창의성', '리더십'];
+            const data = labels.map(() => 60 + Math.random() * 40);
+
+            const ctx = document.getElementById('resultChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: currentConfig.title,
+                        data: data,
+                        backgroundColor: `${currentConfig.color}44`,
+                        borderColor: currentConfig.color,
+                        pointBackgroundColor: currentConfig.color,
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            angleLines: { color: 'rgba(255,255,255,0.1)' },
+                            pointLabels: { color: '#94a3b8', font: { size: 10, weight: 'bold' } },
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        renderQuestion();
+    </script>
+</body>
+</html>

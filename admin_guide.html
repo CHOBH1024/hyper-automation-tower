@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN GUIDE | 신한국 총무국</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        .guide-card { background: white; border: 1px solid #e2e8f0; transition: all 0.3s ease; }
+        .guide-card:hover { border-color: #6366f1; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-4px); }
+        .sidebar-link.active { background: #eff6ff; color: #2563eb; font-weight: 700; border-right: 4px solid #2563eb; }
+        .content-area { max-height: calc(100vh - 150px); overflow-y: auto; }
+        pre { background: #f1f5f9; padding: 1rem; border-radius: 0.75rem; font-size: 0.85rem; overflow-x: auto; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-4">
+            <a href="system_b_dashboard.html" class="p-2 hover:bg-slate-100 rounded-full transition-all">
+                <i data-lucide="arrow-left" class="w-5 h-5 text-slate-600"></i>
+            </a>
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-black text-xs">G</div>
+                <h1 class="text-xl font-black text-slate-900 tracking-tight">ADMIN <span class="text-indigo-600">GUIDE</span></h1>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                <input type="text" placeholder="규정 또는 키워드 검색..." class="pl-10 pr-4 py-2 bg-slate-100 border-none rounded-full text-sm w-64 focus:ring-2 focus:ring-indigo-500 transition-all">
+            </div>
+            <button class="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-black transition-all">업데이트 요청</button>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside class="w-72 h-[calc(100vh-73px)] bg-white border-right border-slate-200 py-8 overflow-y-auto hidden lg:block">
+            <div class="px-6 mb-8">
+                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">카테고리</h3>
+                <nav class="space-y-1">
+                    <button onclick="showCategory('rules')" class="sidebar-link w-full text-left px-4 py-3 rounded-l-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-3 active">
+                        <i data-lucide="file-text" class="w-4 h-4"></i> 행정 규정 및 규칙
+                    </button>
+                    <button onclick="showCategory('finance')" class="sidebar-link w-full text-left px-4 py-3 rounded-l-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-3">
+                        <i data-lucide="credit-card" class="w-4 h-4"></i> 재무 처리 지침
+                    </button>
+                    <button onclick="showCategory('tips')" class="sidebar-link w-full text-left px-4 py-3 rounded-l-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-3">
+                        <i data-lucide="lightbulb" class="w-4 h-4"></i> 업무 효율화 팁
+                    </button>
+                    <button onclick="showCategory('faq')" class="sidebar-link w-full text-left px-4 py-3 rounded-l-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-3">
+                        <i data-lucide="help-circle" class="w-4 h-4"></i> 자주 묻는 질문 (FAQ)
+                    </button>
+                </nav>
+            </div>
+            <div class="px-6">
+                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">최근 본 문서</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-xs text-slate-500 hover:text-indigo-600 flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3"></i> 주간보고서 작성 가이드</a></li>
+                    <li><a href="#" class="text-xs text-slate-500 hover:text-indigo-600 flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3"></i> 소모품 청구 절차</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8 md:p-12 content-area">
+            <div id="content-rules" class="category-section">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-black text-slate-900 mb-2">행정 규정 및 규칙</h2>
+                    <p class="text-slate-500">신한국 총무국의 표준 행정 절차 및 필수 준수 사항입니다.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="guide-card p-8 rounded-[2rem]">
+                        <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">보고 체계 규정</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-6">모든 주간 보고는 매주 월요일 오전 10시까지 시스템을 통해 제출되어야 하며, 미준수 시 알림이 자동 발송됩니다.</p>
+                        <a href="#" class="text-xs font-bold text-indigo-600 hover:underline">상세 보기 &rarr;</a>
+                    </div>
+                    <div class="guide-card p-8 rounded-[2rem]">
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">데이터 보안 규칙</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-6">민감한 교구 데이터 및 인적 사항은 외부 유출을 엄격히 금하며, 반드시 지정된 보안 채널을 통해서만 공유합니다.</p>
+                        <a href="#" class="text-xs font-bold text-emerald-600 hover:underline">상세 보기 &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="mt-12 bg-indigo-900 text-white p-10 rounded-[3rem] shadow-xl shadow-indigo-500/20">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-black mb-4">주간 보고서 작성 마스터 가이드</h3>
+                            <p class="text-indigo-100 text-sm leading-relaxed mb-6 opacity-80">효과적인 보고를 위해 개조식 작성을 권장하며, 수치화된 성과를 우선적으로 기술하십시오. Weekly Master 엔진을 활용하면 표준화된 양식을 쉽게 생성할 수 있습니다.</p>
+                            <div class="flex gap-4">
+                                <button class="bg-white text-indigo-900 px-6 py-3 rounded-xl font-bold text-sm">가이드 다운로드</button>
+                                <button class="bg-indigo-700 text-white px-6 py-3 rounded-xl font-bold text-sm">영상 강의 시청</button>
+                            </div>
+                        </div>
+                        <div class="hidden md:block w-48 h-48 bg-white/10 rounded-full border border-white/20 flex items-center justify-center">
+                            <i data-lucide="play-circle" class="w-20 h-20 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-finance" class="category-section hidden">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-black text-slate-900 mb-2">재무 처리 지침</h2>
+                    <p class="text-slate-500">투명하고 정확한 자금 집행을 위한 회계 가이드라인입니다.</p>
+                </div>
+                <!-- Finance content would go here -->
+                <p class="text-slate-400 italic">내용 준비 중...</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function showCategory(id) {
+            document.querySelectorAll('.category-section').forEach(sec => sec.classList.add('hidden'));
+            const target = document.getElementById('content-' + id);
+            if(target) target.classList.remove('hidden');
+            
+            document.querySelectorAll('.sidebar-link').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>

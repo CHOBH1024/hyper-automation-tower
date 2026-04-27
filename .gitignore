@@ -4,3 +4,8 @@ pinggy.txt
 serveo.txt
 .DS_Store
 node_modules
+data/
+*.json
+*.ps1
+*.vbs
+*.docx

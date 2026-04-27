@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEEKLY MASTER | 신한국 총무국</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .sidebar { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(20px); border-right: 1px solid rgba(255,255,255,0.05); }
+        .report-paper { 
+            background: white; 
+            color: #0f172a; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5); 
+            border-radius: 2px;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm;
+            margin: 0 auto;
+            position: relative;
+        }
+        .section-header { border-left: 6px solid #0f172a; padding-left: 1rem; margin-bottom: 1.5rem; }
+        .input-glow:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 15px rgba(99, 102, 241, 0.3); }
+        
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; padding: 0; }
+            .report-paper { box-shadow: none; margin: 0; width: 100%; border: none; }
+        }
+
+        .situation-btn.active { background: #6366f1; color: white; border-color: #6366f1; }
+        
+        /* Premium Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Left Sidebar: Controls -->
+    <aside class="sidebar w-96 p-8 flex flex-col no-print overflow-y-auto">
+        <div class="flex items-center gap-4 mb-12">
+            <a href="system_b_dashboard.html" class="p-2 bg-white/5 rounded-xl hover:bg-white/10 transition-all">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+            <h1 class="text-xl font-black tracking-tighter">WEEKLY <span class="text-indigo-400">MASTER</span></h1>
+        </div>
+
+        <!-- Situation Selector -->
+        <div class="mb-10">
+            <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4 block">보고 상황 테마 선택</label>
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="setSituation('general')" class="situation-btn active border border-slate-700 p-3 rounded-xl text-xs font-bold transition-all hover:border-slate-500">일반 정기 보고</button>
+                <button onclick="setSituation('finance')" class="situation-btn border border-slate-700 p-3 rounded-xl text-xs font-bold transition-all hover:border-slate-500">재무/회계 감사</button>
+                <button onclick="setSituation('security')" class="situation-btn border border-slate-700 p-3 rounded-xl text-xs font-bold transition-all hover:border-slate-500">보안/기획 이슈</button>
+                <button onclick="setSituation('personnel')" class="situation-btn border border-slate-700 p-3 rounded-xl text-xs font-bold transition-all hover:border-slate-500">인사/조직 관리</button>
+            </div>
+        </div>
+
+        <!-- Data Inputs -->
+        <div class="space-y-6 flex-1">
+            <div>
+                <label class="text-[10px] font-bold text-slate-400 mb-2 block">보고서 제목</label>
+                <input type="text" id="in-title" value="주간 행정 업무 계획 및 실적 보고" oninput="updateReport()" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl p-3 text-sm input-glow">
+            </div>
+            <div>
+                <label class="text-[10px] font-bold text-slate-400 mb-2 block">핵심 성과 (KPI)</label>
+                <textarea id="in-kpi" oninput="updateReport()" rows="3" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl p-3 text-sm input-glow" placeholder="항목당 한 줄씩 입력..."></textarea>
+            </div>
+            <div>
+                <label class="text-[10px] font-bold text-slate-400 mb-2 block">금주 주요 추진 실적</label>
+                <textarea id="in-performance" oninput="updateReport()" rows="5" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl p-3 text-sm input-glow"></textarea>
+            </div>
+            <div>
+                <label class="text-[10px] font-bold text-slate-400 mb-2 block">특이사항 및 지시사항</label>
+                <textarea id="in-issues" oninput="updateReport()" rows="3" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl p-3 text-sm input-glow"></textarea>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-white/5 space-y-3">
+            <button onclick="syncMasterData()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20">
+                <i data-lucide="refresh-cw" id="syncIcon" class="w-5 h-5"></i> 실시간 마스터 데이터 동기화
+            </button>
+            <div id="ai-insight-panel" class="bg-indigo-500/10 border border-indigo-500/20 rounded-2xl p-4 text-[10px] text-indigo-300 leading-relaxed hidden">
+                <div class="font-black mb-2 flex items-center gap-2">
+                    <i data-lucide="brain-circuit" class="w-3 h-3"></i> AI STRATEGIC ANALYSIS
+                </div>
+                <div id="ai-insight-text"></div>
+            </div>
+            <button onclick="generatePDF()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
+                <i data-lucide="download" class="w-5 h-5"></i> PDF 리포트 추출
+            </button>
+        </div>
+    </aside>
+
+    <!-- Right: Report Preview -->
+    <main class="flex-1 p-12 overflow-y-auto bg-slate-950">
+        <div id="report-container" class="report-paper">
+            <!-- Header -->
+            <div class="flex justify-between items-start border-b-4 border-slate-900 pb-10 mb-12">
+                <div>
+                    <div class="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase mb-3">Strategic Administrative Report</div>
+                    <h2 id="res-title" class="text-4xl font-black tracking-tighter">주간 행정 업무 계획 및 실적 보고</h2>
+                </div>
+                <div class="text-right">
+                    <div class="flex items-center justify-end gap-2 mb-2">
+                        <div class="w-12 h-12 bg-slate-900 text-white flex items-center justify-center font-black text-xl">新</div>
+                        <div class="text-left leading-none">
+                            <span class="text-[10px] font-black block">신한국 총무국</span>
+                            <span class="text-[8px] text-slate-400 font-bold uppercase tracking-tighter">Strategic Admin</span>
+                        </div>
+                    </div>
+                    <p class="text-[11px] font-bold text-slate-500">보고일자: <span id="res-date" class="text-slate-900">2026. 04. 27</span></p>
+                    <p class="text-[11px] font-bold text-slate-500">작성자: <span class="text-slate-900">지능형 행정 시스템</span></p>
+                </div>
+            </div>
+
+            <!-- 1. 핵심 성과 지표 (KPI) -->
+            <section class="mb-12">
+                <div class="section-header">
+                    <h3 class="text-lg font-black tracking-tight">1. 주요 지표 및 핵심 성과</h3>
+                </div>
+                <div id="res-kpi-grid" class="grid grid-cols-3 gap-4 mb-8">
+                    <div class="border border-slate-200 p-4 rounded-lg bg-slate-50">
+                        <p class="text-[9px] font-bold text-slate-500 mb-1">전사 보고율</p>
+                        <p class="text-2xl font-black">94.2%</p>
+                        <p class="text-[8px] text-emerald-600 font-bold mt-1">▲ 전주 대비 1.5%</p>
+                    </div>
+                    <div class="border border-slate-200 p-4 rounded-lg bg-slate-50">
+                        <p class="text-[9px] font-bold text-slate-500 mb-1">예산 집행률</p>
+                        <p class="text-2xl font-black">78.4%</p>
+                        <p class="text-[8px] text-slate-400 font-bold mt-1">● 목표 범위 내</p>
+                    </div>
+                    <div class="border border-slate-200 p-4 rounded-lg bg-slate-50">
+                        <p class="text-[9px] font-bold text-slate-500 mb-1">위험 지수</p>
+                        <p class="text-2xl font-black">LOW</p>
+                        <p class="text-[8px] text-blue-600 font-bold mt-1">STABLE</p>
+                    </div>
+                </div>
+                <ul id="res-kpi-list" class="space-y-2 text-sm list-disc list-inside font-medium text-slate-700 ml-2">
+                    <li>Mirror Insight System 8대 모듈 통합 포털 구축 완료</li>
+                    <li>전국 사무장 대상 행정 가이드 디지털 배포 (100% 도달)</li>
+                </ul>
+            </section>
+
+            <!-- 2. 주요 추진 실적 -->
+            <section class="mb-12">
+                <div class="section-header">
+                    <h3 class="text-lg font-black tracking-tight">2. 금주 주요 추진 실적 및 현황</h3>
+                </div>
+                <div id="res-performance" class="space-y-4 text-sm leading-relaxed text-slate-800">
+                    <p class="font-bold">■ 행정 시스템 고도화 및 데이터 통합</p>
+                    <ul class="ml-4 list-none space-y-1">
+                        <li>- 기존 분산되어 있던 8개 진단 도구를 '미러 인사이트' 포털로 단일화</li>
+                        <li>- 각 교구별 데이터 수집 엔진 최적화를 통한 응답 속도 40% 개선</li>
+                    </ul>
+                    <p class="font-bold mt-4">■ 전략 보고 체계 수립</p>
+                    <ul class="ml-4 list-none space-y-1">
+                        <li>- 상황별 맞춤형 보고서 자동 생성 엔진(Weekly Master) 프로토타입 가동</li>
+                        <li>- OneDrive 기반 행정 양식 학습 알고리즘 적용 및 서식 통일</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 3. 특이사항 및 지시사항 -->
+            <section class="mb-12">
+                <div class="section-header">
+                    <h3 class="text-lg font-black tracking-tight">3. 현안 사항 및 지시사항 이행 현황</h3>
+                </div>
+                <div id="res-issues" class="bg-slate-50 border border-slate-100 p-6 text-sm italic text-slate-600 leading-relaxed">
+                    "현재 Mirror Insight System 도입에 따른 사용자 교육 문의가 증가하고 있습니다. 차주 중 '행정 가이드' 섹션에 상세 매뉴얼 및 FAQ를 업데이트하여 대응할 예정입니다. 또한, 재무 데이터 이상 징후가 발견된 일부 항목에 대해서는 정밀 분석을 지시하였습니다."
+                </div>
+            </section>
+
+            <!-- Footer Stamp -->
+            <div class="mt-20 flex justify-end">
+                <div class="text-center">
+                    <p class="text-[10px] font-bold text-slate-400 mb-4 tracking-widest uppercase">Authorized by Hyper Core</p>
+                    <div class="inline-block border-2 border-rose-600 text-rose-600 font-black px-4 py-2 rotate-[-5deg] text-xl">
+                        신한국 총무국
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('res-date').innerText = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+        const situations = {
+            general: {
+                title: "주간 행정 업무 계획 및 실적 보고",
+                kpi: "전사 보고율: 94.2%\n예산 집행률: 78.4%\n전략 과제 진척도: 85%",
+                performance: "■ 행정 시스템 고도화 및 데이터 통합\n- Mirror Insight 포털 구축 완료\n- 데이터 수집 엔진 최적화\n\n■ 전략 보고 체계 수립\n- Weekly Master 엔진 프로토타입 가동",
+                issues: "사용자 교육 문의 증가에 따른 대응 매뉴얼 배포 예정. 시스템 안정성 상시 모니터링 중."
+            },
+            finance: {
+                title: "주간 재무 지표 및 자금 집행 보고",
+                kpi: "가용 자금: 1.2B\n집행률: 62%\n미결산 항목: 3건",
+                performance: "■ 2분기 예산 집행 정밀 모니터링\n- 각 부서별 불용 예산 회수 및 재배정\n\n■ 재무 감사 시스템 연동\n- 이상 징후 감지 알고리즘 적용",
+                issues: "특정 항목의 지출 증빙 서류 보완 필요. 마감 기한 내 전 부서 결산 독려 중."
+            },
+            security: {
+                title: "주간 보안 현황 및 전략 기획 보고",
+                kpi: "보안 위협: 0건\n접근 로그: 정상\n민감 데이터 보호율: 100%",
+                performance: "■ 통합 관제 시스템 보안 강화\n- 2단계 인증 전사 적용 완료\n\n■ 핵심 전략 기획 수립\n- 상반기 성과 분석 및 하반기 로드맵 조정",
+                issues: "외부 접근 시도 차단 기록 분석 결과, 단순 오접속으로 판명. 정기 보안 교육 실시 예정."
+            },
+            personnel: {
+                title: "주간 인사 현황 및 조직 문화 보고",
+                kpi: "근태 만족도: 88%\n교육 참여율: 92%\n조직 건강도: GOOD",
+                performance: "■ Mirror Insight 기반 조직 진단 착수\n- 전 직원 대상 I-Mirror 설문 진행 중\n\n■ 신규 인력 온보딩 프로세스 개선\n- 행정 가이드 연동 디지털 가이드북 제공",
+                issues: "번아웃 위험군 선제적 관리 필요. 유연 근무제 적용 범위 확대 검토 중."
+            }
+        };
+
+        function setSituation(type) {
+            document.querySelectorAll('.situation-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const data = situations[type];
+            document.getElementById('in-title').value = data.title;
+            document.getElementById('in-kpi').value = data.kpi;
+            document.getElementById('in-performance').value = data.performance;
+            document.getElementById('in-issues').value = data.issues;
+            
+            updateReport();
+        }
+
+        function updateReport() {
+            document.getElementById('res-title').innerText = document.getElementById('in-title').value;
+            
+            // KPI List
+            const kpis = document.getElementById('in-kpi').value.split('\n');
+            const list = document.getElementById('res-kpi-list');
+            list.innerHTML = '';
+            kpis.forEach(k => { if(k.trim()) list.innerHTML += `<li>${k}</li>`; });
+
+            // Performance
+            const perf = document.getElementById('in-performance').value.replace(/\n/g, '<br>');
+            document.getElementById('res-performance').innerHTML = perf;
+
+            // Issues
+            document.getElementById('res-issues').innerText = document.getElementById('in-in-issues' ? 'in-in-issues' : 'in-issues').value;
+        }
+
+        async function syncMasterData() {
+            const icon = document.getElementById('syncIcon');
+            const panel = document.getElementById('ai-insight-panel');
+            const insightText = document.getElementById('ai-insight-text');
+            icon.classList.add('animate-spin');
+            
+            try {
+                // Fetch sequence from local data proxy
+                const [summaryRes, budgetRes, dispatchRes] = await Promise.all([
+                    fetch('data/EXECUTIVE_SUMMARY.txt').then(r => r.text()),
+                    fetch('data/proposed_budget_2027.json').then(r => r.json()),
+                    fetch('data/dispatch_log.json').then(r => r.json())
+                ]);
+
+                // 1. Populate KPI
+                const totalBudget = budgetRes.totalBudget;
+                const itBudget = budgetRes.allocation.find(a => a.dept.includes('IT'))?.amount || "0";
+                const itPct = Math.round(600/1750*100); // Fixed for demo based on master data
+                
+                document.getElementById('in-kpi').value = `총 예산안: ${totalBudget}\nIT/자동화 집중도: ${itPct}%\n전국 교구 동기화: 가동 중`;
+
+                // 2. Populate Performance
+                const summary = summaryRes.split(']')[1] || summaryRes;
+                document.getElementById('in-performance').value = `■ 금주 종합 요약\n${summary}\n\n■ 부서별 예산 배정 현황\n- ${budgetRes.allocation.map(a => `${a.dept}: ${a.amount}`).join('\n- ')}`;
+
+                // 3. Populate Issues
+                const lagging = dispatchRes.results.filter(r => r.message.includes('지연'));
+                document.getElementById('in-issues').value = `🚨 보고 지연 감지: ${lagging.map(l => l.diocese).join(', ')} 교구 대상 긴급 독려 발송됨.\n${budgetRes.strategy} 추진 중.`;
+
+                updateReport();
+                
+                // Show AI Insight
+                panel.classList.remove('hidden');
+                insightText.innerHTML = `현재 <b>${itBudget}</b> 규모의 IT 인프라 확충안이 승인 대기 중입니다. <b>${lagging.length}개</b> 교구의 보고 지연을 해결하기 위해 Antigravity AI가 자동 독려 시스템을 가동했습니다.`;
+                
+                alert('로컬 마스터 데이터(OneDrive)와 성공적으로 동기화되었습니다.');
+            } catch (err) {
+                console.error(err);
+                alert('데이터 동기화 실패. 마스터 서버 연결을 확인하세요.');
+            } finally {
+                icon.classList.remove('animate-spin');
+            }
+        }
+
+        function autoGenerateAI() {
+            alert("AI가 데이터를 분석하여 최적의 보고서 초안을 구성합니다...");
+            setSituation('general');
+        }
+
+        function generatePDF() {
+            const element = document.getElementById('report-container');
+            const opt = {
+                margin: 0,
+                filename: 'Weekly_Report_Master.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
+        }
+    </script>
+</body>
+</html>

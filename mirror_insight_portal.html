@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIRROR INSIGHT | 신한국 총무국</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #020617; 
+            color: white;
+            background-image: radial-gradient(circle at 50% 0%, rgba(30, 41, 59, 1) 0%, rgba(2, 6, 23, 1) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        .hover-glow-blue:hover { box-shadow: 0 0 30px rgba(37, 99, 235, 0.2); }
+        .hover-glow-amber:hover { box-shadow: 0 0 30px rgba(245, 158, 11, 0.2); }
+        .hover-glow-teal:hover { box-shadow: 0 0 30px rgba(13, 148, 136, 0.2); }
+        .hover-glow-emerald:hover { box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
+        .hover-glow-violet:hover { box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); }
+        .hover-glow-indigo:hover { box-shadow: 0 0 30px rgba(79, 70, 229, 0.2); }
+        .hover-glow-rose:hover { box-shadow: 0 0 30px rgba(225, 29, 72, 0.2); }
+        .hover-glow-lime:hover { box-shadow: 0 0 30px rgba(132, 204, 22, 0.2); }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center backdrop-blur-md border-b border-white/5">
+        <a href="system_b_dashboard.html" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-indigo-600 transition-all">
+                <i data-lucide="arrow-left" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="font-black tracking-tighter text-xl">MIRROR <span class="text-indigo-500">INSIGHT</span></span>
+        </a>
+        <div class="text-[10px] font-bold text-slate-500 tracking-widest uppercase">Admin Integrated Control</div>
+    </nav>
+
+    <main class="pt-32 pb-16 px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
+        <div class="text-center mb-16 fade-in-up">
+            <span class="px-4 py-1.5 rounded-full bg-slate-800 text-slate-300 text-xs font-bold tracking-widest uppercase mb-6 inline-block border border-slate-700">The Ultimate Self-Reflection Suite</span>
+            <h1 class="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 mb-6 leading-tight tracking-tight">내면을 비추는 8개의 거울</h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">성과와 실적이라는 외부의 지표를 넘어, 당신의 본질을 꿰뚫습니다.<br>원하는 진단 모듈을 선택하여 깊은 성찰의 여정을 시작하십시오.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- 1. I-Mirror -->
+            <div class="glass-card rounded-3xl p-6 flex flex-col hover-glow-blue fade-in-up delay-1 cursor-pointer group" onclick="launchApp('I-Mirror', 'I')">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white transition-all"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+                <h3 class="text-xl font-bold text-white mb-2">I-Mirror <span class="text-sm font-normal text-slate-400 block mt-1">소명 및 내면 가치 진단</span></h3>
+                <p class="text-slate-500 text-sm mb-6 flex-1">공직자, 목회자를 위한 진단. 기복신앙이나 외적 성과를 넘어선 존재의 본질과 정직성을 점검합니다.</p>
+                <div class="flex items-center justify-between text-xs font-bold mt-auto pt-4 border-t border-white/5"><span class="text-slate-400"><i data-lucide="list" class="w-3 h-3 inline mr-1"></i>120 문항</span><span class="text-blue-400 group-hover:translate-x-1 transition-transform">시작하기 &rarr;</span></div>
+            </div>
+            <!-- 2. L-Mirror -->
+            <div class="glass-card rounded-3xl p-6 flex flex-col hover-glow-amber fade-in-up delay-1 cursor-pointer group" onclick="launchApp('L-Mirror', 'L')">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all"><i data-lucide="mic" class="w-6 h-6"></i></div>
+                <h3 class="text-xl font-bold text-white mb-2">L-Mirror <span class="text-sm font-normal text-slate-400 block mt-1">리더십 및 강연/설교 진단</span></h3>
+                <p class="text-slate-500 text-sm mb-6 flex-1">말과 태도가 조직에 미치는 온도를 측정합니다. 일방적 통보인지, 영감을 주는 소통인지 점검합니다.</p>
+                <div class="flex items-center justify-between text-xs font-bold mt-auto pt-4 border-t border-white/5"><span class="text-slate-400"><i data-lucide="list" class="w-3 h-3 inline mr-1"></i>120 문항</span><span class="text-amber-400 group-hover:translate-x-1 transition-transform">시작하기 &rarr;</span></div>
+            </div>
+            <!-- 3. A-Mirror -->
+            <div class="glass-card rounded-3xl p-6 flex flex-col hover-glow-teal fade-in-up delay-2 cursor-pointer group" onclick="launchApp('A-Mirror', 'A')">
+                <div class="w-12 h-12 rounded-2xl bg-teal-500/20 text-teal-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-teal-500 group-hover:text-white transition-all"><i data-lucide="scan-face" class="w-6 h-6"></i></div>
+                <h3 class="text-xl font-bold text-white mb-2">A-Mirror <span class="text-sm font-normal text-slate-400 block mt-1">진정성 및 일치도 진단</span></h3>
+                <p class="text-slate-500 text-sm mb-6 flex-1">무대 위와 무대 아래의 괴리감을 측정합니다. 가면을 벗고 취약성을 인정할 용기가 있는지 묻습니다.</p>
+                <div class="flex items-center justify-between text-xs font-bold mt-auto pt-4 border-t border-white/5"><span class="text-slate-400"><i data-lucide="list" class="w-3 h-3 inline mr-1"></i>120 문항</span><span class="text-teal-400 group-hover:translate-x-1 transition-transform">시작하기 &rarr;</span></div>
+            </div>
+            <!-- 4. S-Mirror -->
+            <div class="glass-card rounded-3xl p-6 flex flex-col hover-glow-emerald fade-in-up delay-2 cursor-pointer group" onclick="launchApp('S-Mirror', 'S')">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all"><i data-lucide="compass" class="w-6 h-6"></i></div>
+                <h3 class="text-xl font-bold text-white mb-2">S-Mirror <span class="text-sm font-normal text-slate-400 block mt-1">사회적 감수성 진단</span></h3>
+                <p class="text-slate-500 text-sm mb-6 flex-1">인권, 성평등, 동물권, 공정성 등 현대 사회의 가치관 변화 속 나의 윤리적 좌표를 점검합니다.</p>
+                <div class="flex items-center justify-between text-xs font-bold mt-auto pt-4 border-t border-white/5"><span class="text-slate-400"><i data-lucide="list" class="w-3 h-3 inline mr-1"></i>120 문항</span><span class="text-emerald-400 group-hover:translate-x-1 transition-transform">시작하기 &rarr;</span></div>
+            </div>
+            <!-- 5. G-Mirror -->
+            <div class="glass-card rounded-3xl p-6 flex flex-col hover-glow-violet fade-in-up delay-3 cursor-pointer group" onclick="launchApp('G-Mirror', 'G')">
+                <div class="w-12 h-12 rounded-2xl bg-violet-500/20 text-violet-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-violet-500 group-hover:text-white transition-all"><i data-lucide="users" class="w-6 h-6"></i></div>
+                <h3 class="text-xl font-bold text-white mb-2">G-Mirror <span class="text-sm font-normal text-slate-400 block mt-1">세대 공감 및 소통 진단</span></h3>
+                <p class="text-slate-500 text-sm mb-6 flex-1">0세부터 40대까지. 무의식적으로 범하는 물리적/정서적 경계 침범과 '꼰대력'을 진단합니다.</p>
+                <div class="flex items-center justify-between text-xs font-bold mt-auto pt-4 border-t border-white/5"><span class="text-slate-400"><i data-lucide="list" class="w-3 h-3 inline mr-1"></i>120 문항</span><span class="text-violet-400 group-hover:translate-x-1 transition-transform">시작하기 &rarr;</span></div>
+            </div>
+            <!-- 6. C-Mirror -->
+            <div class="glass-card rounded-3xl p-6 flex flex-col hover-glow-indigo fade-in-up delay-3 cursor-pointer group" onclick="launchApp('C-Mirror', 'C')">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white transition-all"><i data-lucide="headphones" class="w-6 h-6"></i></div>
+                <h3 class="text-xl font-bold text-white mb-2">C-Mirror <span class="text-sm font-normal text-slate-400 block mt-1">상담자/전문가 역량 진단</span></h3>
+                <p class="text-slate-500 text-sm mb-6 flex-1">상담사, 교사 등을 위한 진단. 경청의 깊이, 위기 대처, 그리고 감정적 소진(번아웃)을 예방합니다.</p>
+                <div class="flex items-center justify-between text-xs font-bold mt-auto pt-4 border-t border-white/5"><span class="text-slate-400"><i data-lucide="list" class="w-3 h-3 inline mr-1"></i>120 문항</span><span class="text-indigo-400 group-hover:translate-x-1 transition-transform">시작하기 &rarr;</span></div>
+            </div>
+            <!-- 7. P-Mirror -->
+            <div class="glass-card rounded-3xl p-6 flex flex-col hover-glow-rose fade-in-up delay-4 cursor-pointer group" onclick="launchApp('P-Mirror', 'P')">
+                <div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-white transition-all"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+                <h3 class="text-xl font-bold text-white mb-2">P-Mirror <span class="text-sm font-normal text-slate-400 block mt-1">개인 역량 및 매력도 진단</span></h3>
+                <p class="text-slate-500 text-sm mb-6 flex-1">눈치, 일머리, 공감력, 실행력. 착각을 걷어내고 내가 얼마나 호감 가고 일 잘하는 사람인지 해부합니다.</p>
+                <div class="flex items-center justify-between text-xs font-bold mt-auto pt-4 border-t border-white/5"><span class="text-slate-400"><i data-lucide="list" class="w-3 h-3 inline mr-1"></i>120 문항</span><span class="text-rose-400 group-hover:translate-x-1 transition-transform">시작하기 &rarr;</span></div>
+            </div>
+            <!-- 8. V-Mirror -->
+            <div class="glass-card rounded-3xl p-6 flex flex-col hover-glow-lime fade-in-up delay-4 cursor-pointer group" onclick="launchApp('V-Mirror', 'V')">
+                <div class="w-12 h-12 rounded-2xl bg-lime-500/20 text-lime-400 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-white transition-all"><i data-lucide="coffee" class="w-6 h-6"></i></div>
+                <h3 class="text-xl font-bold text-white mb-2">V-Mirror <span class="text-sm font-normal text-slate-400 block mt-1">취향 및 라이프스타일 진단</span></h3>
+                <p class="text-slate-500 text-sm mb-6 flex-1">남들이 하니까 하는 가짜 취미가 아닌, 내 영혼의 배터리를 100% 충전시켜 줄 진짜 주파수를 찾습니다.</p>
+                <div class="flex items-center justify-between text-xs font-bold mt-auto pt-4 border-t border-white/5"><span class="text-slate-400"><i data-lucide="list" class="w-3 h-3 inline mr-1"></i>120 문항</span><span class="text-lime-400 group-hover:translate-x-1 transition-transform">시작하기 &rarr;</span></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 text-center text-slate-500 text-xs border-t border-white/5 relative z-10">
+        <p>Mirror Insight System v6.0 © 2026. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Launch Modal -->
+    <div id="launch-modal" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl p-8 max-w-sm w-full shadow-2xl transform scale-95 transition-transform duration-300 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 rounded-full p-2"><i data-lucide="x" class="w-4 h-4"></i></button>
+            <div id="modal-icon" class="w-16 h-16 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center mx-auto mb-6"><i data-lucide="play" class="w-8 h-8"></i></div>
+            <h3 id="modal-title" class="text-2xl font-black text-white text-center mb-2">Module Name</h3>
+            <p class="text-slate-400 text-center text-sm mb-8 leading-relaxed">해당 진단 시스템 모듈로 이동합니다.<br>준비가 되셨다면 아래 버튼을 눌러주세요.</p>
+            <div class="space-y-3">
+                <button id="modal-start-btn" class="w-full py-4 bg-white text-slate-900 font-bold rounded-2xl hover:bg-slate-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">시스템 구동하기</button>
+                <button onclick="closeModal()" class="w-full py-4 border border-slate-700 text-slate-400 font-bold rounded-2xl hover:bg-slate-800 transition-colors">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const modal = document.getElementById('launch-modal');
+        const modalContent = modal.querySelector('div');
+        const modalTitle = document.getElementById('modal-title');
+        const modalStartBtn = document.getElementById('modal-start-btn');
+        const modalIcon = document.getElementById('modal-icon');
+
+        const colorMap = {
+            'I-Mirror': { bg: 'bg-blue-500/20', text: 'text-blue-400', icon: 'shield-check', shadow: 'rgba(37, 99, 235, 0.4)' },
+            'L-Mirror': { bg: 'bg-amber-500/20', text: 'text-amber-400', icon: 'mic', shadow: 'rgba(245, 158, 11, 0.4)' },
+            'A-Mirror': { bg: 'bg-teal-500/20', text: 'text-teal-400', icon: 'scan-face', shadow: 'rgba(13, 148, 136, 0.4)' },
+            'S-Mirror': { bg: 'bg-emerald-500/20', text: 'text-emerald-400', icon: 'compass', shadow: 'rgba(16, 185, 129, 0.4)' },
+            'G-Mirror': { bg: 'bg-violet-500/20', text: 'text-violet-400', icon: 'users', shadow: 'rgba(139, 92, 246, 0.4)' },
+            'C-Mirror': { bg: 'bg-indigo-500/20', text: 'text-indigo-400', icon: 'headphones', shadow: 'rgba(79, 70, 229, 0.4)' },
+            'P-Mirror': { bg: 'bg-rose-500/20', text: 'text-rose-400', icon: 'sparkles', shadow: 'rgba(225, 29, 72, 0.4)' },
+            'V-Mirror': { bg: 'bg-lime-500/20', text: 'text-lime-400', icon: 'coffee', shadow: 'rgba(132, 204, 22, 0.4)' }
+        };
+
+        function launchApp(moduleName, type) {
+            const config = colorMap[moduleName];
+            modalTitle.innerText = moduleName;
+            modalIcon.className = `w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${config.bg} ${config.text}`;
+            modalIcon.innerHTML = `<i data-lucide="${config.icon}" class="w-8 h-8"></i>`;
+            modalStartBtn.style.boxShadow = `0 0 20px ${config.shadow}`;
+            lucide.createIcons();
+            modalStartBtn.onclick = () => {
+                window.location.href = 'mirror_engine.html?type=' + type;
+            };
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+    </script>
+</body>
+</html>

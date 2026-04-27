@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I-MIRROR | 신한국 총무국</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root { --brand-primary: #2563eb; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #f8fafc; }
+        .option-btn { transition: all 0.2s ease; cursor: pointer; }
+        .option-btn:hover { border-color: var(--brand-primary); color: var(--brand-primary); background: #f0f7ff; }
+        .selected-answer { background: var(--brand-primary) !important; color: white !important; border-color: var(--brand-primary) !important; }
+        .fade-in { animation: fadeIn 0.5s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .progress-indicator { height: 4px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--brand-primary); transition: width 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+<nav class="p-6 flex justify-between items-center">
+    <a href="mirror_insight_portal.html" class="flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-all">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+        <span class="text-sm font-bold">Portal</span>
+    </a>
+    <div class="text-[10px] font-black text-blue-600 tracking-widest uppercase bg-blue-50 px-3 py-1 rounded-full">I-Mirror: Vocation & Values</div>
+</nav>
+
+<div id="app-viewport" class="transition-all duration-500">
+    <!-- Intro Screen -->
+    <main id="screen-intro" class="max-w-2xl mx-auto py-16 px-6 fade-in">
+        <div class="text-center mb-12">
+            <div class="w-20 h-20 bg-blue-600 text-white rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-xl shadow-blue-500/20">
+                <i data-lucide="shield-check" class="w-10 h-10"></i>
+            </div>
+            <h1 class="text-4xl font-black text-slate-900 mb-6 leading-tight">소명의 본질을 향한<br>심층 진단</h1>
+            <p class="text-slate-500 text-lg leading-relaxed">이 진단은 성과를 측정하지 않습니다.<br>당신이 어떤 마음으로 길을 걷고 있는지에 대한 과학적 성찰입니다.</p>
+        </div>
+        <div id="intro-action-container" class="space-y-4">
+            <button onclick="showModeSelection()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 rounded-[2rem] transition-all shadow-lg shadow-blue-500/20">진단 시작하기</button>
+        </div>
+    </main>
+
+    <!-- Mode Selection -->
+    <main id="screen-mode" class="hidden max-w-2xl mx-auto py-16 px-6 fade-in">
+        <div class="text-center mb-10"><h2 class="text-3xl font-black text-slate-800 mb-4">진단 모드 선택</h2></div>
+        <div class="grid md:grid-cols-2 gap-6">
+            <button onclick="selectMode(20)" class="bg-white hover:border-blue-500 border-2 border-slate-100 rounded-[2.5rem] p-10 text-left transition-all group">
+                <h3 class="text-2xl font-black text-slate-800 mb-2">핵심 진단</h3>
+                <p class="text-sm text-slate-400">필수 20문항으로 구성된<br>압축 성찰 모드</p>
+            </button>
+            <button onclick="selectMode(120)" class="bg-slate-900 hover:bg-black border-2 border-slate-900 rounded-[2.5rem] p-10 text-left transition-all group">
+                <h3 class="text-2xl font-black text-white mb-2">심층 분석</h3>
+                <p class="text-sm text-slate-500">120문항 마스터 코스<br>정밀 진단 보고서 제공</p>
+            </button>
+        </div>
+    </main>
+
+    <!-- Survey Screen -->
+    <main id="screen-survey" class="hidden max-w-2xl mx-auto py-12 px-6 flex flex-col min-h-[80vh]">
+        <div class="mb-10 text-center">
+            <span class="px-3 py-1 bg-slate-100 text-slate-500 text-[10px] font-black rounded-full mb-2 uppercase" id="cat-label">PART 1</span>
+            <h2 class="text-xs font-bold text-slate-400 mb-4" id="cat-name">소명적 정체성</h2>
+            <div class="progress-indicator max-w-[200px] mx-auto"><div id="progress-bar" class="progress-fill" style="width: 0%"></div></div>
+            <div class="text-[10px] font-bold text-slate-400 mt-2" id="progress-text">001 / 120</div>
+        </div>
+        <div id="question-card" class="bg-white rounded-[2.5rem] shadow-2xl p-10 md:p-14 border border-slate-100 flex-1 flex flex-col justify-between">
+            <div class="text-center">
+                <span class="text-blue-600 font-black text-sm mb-4 block" id="q-number">Q. 1</span>
+                <h3 id="q-text" class="text-xl md:text-2xl font-bold text-slate-800 leading-snug mb-12"></h3>
+            </div>
+            
+            <div id="options-likert" class="space-y-4">
+                <div class="grid grid-cols-5 gap-3">
+                    <button onclick="submitAnswer(1, this)" class="option-btn border-2 border-slate-100 py-6 rounded-2xl font-black text-slate-400" data-val="1">1</button>
+                    <button onclick="submitAnswer(2, this)" class="option-btn border-2 border-slate-100 py-6 rounded-2xl font-black text-slate-400" data-val="2">2</button>
+                    <button onclick="submitAnswer(3, this)" class="option-btn border-2 border-slate-100 py-6 rounded-2xl font-black text-slate-400" data-val="3">3</button>
+                    <button onclick="submitAnswer(4, this)" class="option-btn border-2 border-slate-100 py-6 rounded-2xl font-black text-slate-400" data-val="4">4</button>
+                    <button onclick="submitAnswer(5, this)" class="option-btn border-2 border-slate-100 py-6 rounded-2xl font-black text-slate-400" data-val="5">5</button>
+                </div>
+                <div class="flex justify-between px-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                    <span>전혀 아니다</span>
+                    <span>보통이다</span>
+                    <span>매우 그렇다</span>
+                </div>
+            </div>
+
+            <div id="options-dilemma" class="hidden space-y-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 rounded-2xl bg-blue-50 border border-blue-100"><h4 id="dil-left" class="text-xs font-black text-blue-700 mb-2"></h4><p id="desc-left" class="text-[11px] text-blue-600 leading-relaxed"></p></div>
+                    <div class="p-6 rounded-2xl bg-indigo-50 border border-indigo-100 text-right"><h4 id="dil-right" class="text-xs font-black text-indigo-700 mb-2"></h4><p id="desc-right" class="text-[11px] text-indigo-600 leading-relaxed"></p></div>
+                </div>
+                <div class="flex justify-between px-4">
+                    <button onclick="submitAnswer(1, this)" class="option-btn w-12 h-12 rounded-full font-bold text-xs border-2 border-slate-100" data-val="1">1</button>
+                    <button onclick="submitAnswer(2, this)" class="option-btn w-12 h-12 rounded-full font-bold text-xs border-2 border-slate-100" data-val="2">2</button>
+                    <button onclick="submitAnswer(3, this)" class="option-btn w-12 h-12 rounded-full font-bold text-xs border-2 border-slate-100" data-val="3">3</button>
+                    <button onclick="submitAnswer(4, this)" class="option-btn w-12 h-12 rounded-full font-bold text-xs border-2 border-slate-100" data-val="4">4</button>
+                    <button onclick="submitAnswer(5, this)" class="option-btn w-12 h-12 rounded-full font-bold text-xs border-2 border-slate-100" data-val="5">5</button>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 flex justify-between px-2">
+            <button onclick="prevQuestion()" id="btn-prev" class="text-slate-400 text-xs font-bold invisible flex items-center gap-2">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> 이전 질문
+            </button>
+            <div id="auto-save-text" class="text-xs text-slate-300 font-medium">자동 저장 활성</div>
+        </div>
+    </main>
+
+    <!-- Results Screen -->
+    <main id="screen-results" class="hidden max-w-4xl mx-auto py-12 px-6 pb-32">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-black text-slate-900">진단 결과 보고서</h2>
+            <button onclick="downloadReport()" id="download-btn" class="bg-slate-900 text-white px-8 py-3 rounded-full text-sm font-bold shadow-xl shadow-slate-900/20 flex items-center gap-2">
+                <i data-lucide="download" class="w-4 h-4"></i> 이미지로 저장
+            </button>
+        </div>
+        
+        <div id="capture-area" class="bg-white rounded-[3rem] shadow-2xl p-12 border border-slate-100 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+            
+            <div class="text-center mb-16 pt-8">
+                <div class="inline-block px-4 py-1 bg-blue-50 text-blue-600 text-[10px] font-black rounded-full mb-4 tracking-widest uppercase">I-Mirror Analysis Report</div>
+                <h2 class="text-5xl font-black text-slate-900 mb-4" id="res-status">탁월한 소명가</h2>
+                <p class="text-slate-500 text-lg max-w-md mx-auto" id="res-desc">당신은 내면의 가치와 외적 직무가 완벽한 조화를 이루고 있습니다.</p>
+            </div>
+
+            <div id="validity-warning" class="hidden mb-10 p-6 bg-rose-50 text-rose-800 text-sm rounded-[1.5rem] border border-rose-100 flex items-center gap-4">
+                <i data-lucide="alert-triangle" class="w-8 h-8 opacity-50"></i>
+                <div>
+                    <p class="font-black">신뢰도 주의 (자기 미화 편향 감지)</p>
+                    <p class="opacity-70 text-xs">일부 문항에서 사회적으로 바람직해 보이려는 경향이 발견되었습니다. 결과 해석에 주의가 필요합니다.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <div class="bg-slate-50 rounded-[2.5rem] p-10 flex justify-center border border-slate-100">
+                    <svg width="320" height="320" viewBox="0 0 400 400" id="radar-chart"></svg>
+                </div>
+                <div class="space-y-6" id="score-list">
+                    <!-- Scores will be injected here -->
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-12">
+                <h4 class="text-lg font-black text-slate-900 mb-6">심층 분석 코멘트</h4>
+                <div id="report-text" class="text-slate-600 leading-relaxed space-y-4">
+                    <p>당신의 소명 의식은 매우 견고하며, 이는 조직 내에서 강력한 리더십의 원천이 됩니다. 특히 '공적 정직성' 영역에서 높은 점수를 기록한 것은 당신이 보이지 않는 곳에서도 원칙을 준수하고 있음을 시사합니다.</p>
+                    <p>다만, '내적 소진'에 대한 방어 기제가 작용하고 있을 가능성이 있습니다. 소명에 집중하는 만큼 자신을 돌보는 시간에도 할애하시길 권장합니다.</p>
+                </div>
+            </div>
+
+            <div class="mt-20 pt-8 border-t border-slate-100 flex justify-between items-center opacity-30">
+                <div class="text-[10px] font-black uppercase tracking-widest">Mirror Insight Engine v6.0</div>
+                <div class="text-[10px] font-mono">ID: IM-2026-X942-01</div>
+            </div>
+        </div>
+        
+        <button onclick="location.reload()" class="mt-12 w-full py-5 bg-slate-100 hover:bg-slate-200 text-slate-500 font-black rounded-[2rem] transition-all">새로운 진단 시작하기</button>
+    </main>
+</div>
+
+<script>
+    lucide.createIcons();
+
+    // Sample Data (Generating 20 for prototype)
+    const PART1_FULL = [
+        { c: 1, t: "L", q: "나의 직무는 하늘이 맡긴 거룩한 사명이라고 확신한다." },
+        { c: 1, t: "L", q: "나는 업무를 수행할 때 개인의 이익보다 공공의 선을 먼저 생각한다." },
+        { c: 2, t: "L", q: "아무도 보지 않는 곳에서도 나는 나의 원칙을 결코 굽히지 않는다." },
+        { c: 2, t: "L", q: "나는 실수를 저질렀을 때 즉각적으로 시인하고 책임질 용기가 있다." },
+        { c: 3, t: "L", q: "나의 신념과 일상적인 행동은 한 치의 어긋남 없이 일치한다." },
+        { c: 3, t: "L", q: "나는 타인에게 보여주기 위한 삶보다 스스로에게 떳떳한 삶을 추구한다." },
+        { c: 4, t: "L", q: "업무상 갈등이 발생했을 때 나는 윤리적 기준을 최우선으로 적용한다." },
+        { c: 4, t: "L", q: "나는 부당한 지시에 대해 거절할 수 있는 내면의 힘을 가지고 있다." },
+        { c: 5, t: "L", q: "나는 현재의 직무를 통해 삶의 궁극적인 의미를 발견하고 있다." },
+        { c: 5, t: "L", q: "나는 어려운 상황 속에서도 내가 선택한 길에 대한 확신이 있다." },
+        { c: 1, t: "R", q: "가끔은 내가 왜 이 일을 선택했는지 후회할 때가 많다." },
+        { c: 2, t: "R", q: "상황에 따라서는 약간의 편법을 쓰는 것이 효율적이라고 생각한다." },
+        { c: 3, t: "R", q: "내가 하는 말과 실제 행동 사이에 괴리감을 느낄 때가 자주 있다." },
+        { c: 4, t: "R", q: "다수의 의견이 나의 윤리적 신념과 다를 때 쉽게 동조하는 편이다." },
+        { c: 5, t: "R", q: "요즘 부쩍 업무가 의미 없게 느껴지고 그저 생계 수단으로만 보인다." }
+    ];
+
+    const PART2 = [
+        { left: "정의", right: "자비", descL: "잘못은 대가를 치러야 한다", descR: "사람을 살리는 것이 먼저다", c: 6 },
+        { left: "원칙", right: "유연성", descL: "규칙은 어떤 상황에도 지켜야 한다", descR: "상황에 따라 예외를 둘 수 있다", c: 6 },
+        { left: "성장", right: "안정", descL: "끊임없이 도전하고 변화해야 한다", descR: "현재의 평화를 유지하는 것이 중요하다", c: 6 },
+        { left: "성과", right: "관계", descL: "결과가 좋아야 모든 것이 정당화된다", descR: "함께 가는 과정이 더 중요하다", c: 6 },
+        { left: "직관", right: "데이터", descL: "내면의 목소리를 믿고 결단한다", descR: "객관적인 근거가 있어야 움직인다", c: 6 }
+    ];
+
+    const ALL_QUESTIONS = [...PART1_FULL, ...PART2];
+    let state = { mode: 20, currentIndex: 0, answers: {}, isFinished: false, activeQuestions: [] };
+
+    function showModeSelection() {
+        document.getElementById('screen-intro').classList.add('hidden');
+        document.getElementById('screen-mode').classList.remove('hidden');
+    }
+
+    function selectMode(count) {
+        state.mode = count;
+        state.activeQuestions = count === 20 ? ALL_QUESTIONS : ALL_QUESTIONS; // Prototype uses all 20
+        document.getElementById('screen-mode').classList.add('hidden');
+        document.getElementById('screen-survey').classList.remove('hidden');
+        renderQuestion();
+    }
+
+    function renderQuestion() {
+        const idx = state.currentIndex;
+        const item = state.activeQuestions[idx];
+        const isDilemma = item.c === 6;
+
+        document.getElementById('progress-bar').style.width = `${((idx+1)/state.activeQuestions.length)*100}%`;
+        document.getElementById('progress-text').innerText = `${String(idx+1).padStart(3, '0')} / ${state.activeQuestions.length}`;
+        document.getElementById('q-number').innerText = `Q. ${idx+1}`;
+        
+        const card = document.getElementById('question-card');
+        card.classList.remove('fade-in');
+        void card.offsetWidth;
+        card.classList.add('fade-in');
+        
+        if(isDilemma) {
+            document.getElementById('cat-label').innerText = "PART 2";
+            document.getElementById('cat-name').innerText = "가치관 딜레마";
+            document.getElementById('q-text').innerText = "어느 쪽에 더 동의하십니까?";
+            document.getElementById('options-likert').classList.add('hidden');
+            document.getElementById('options-dilemma').classList.remove('hidden');
+            document.getElementById('dil-left').innerText = item.left;
+            document.getElementById('desc-left').innerText = item.descL;
+            document.getElementById('dil-right').innerText = item.right;
+            document.getElementById('desc-right').innerText = item.descR;
+        } else {
+            document.getElementById('cat-label').innerText = "PART 1";
+            document.getElementById('cat-name').innerText = "소명 및 정직성";
+            document.getElementById('q-text').innerText = item.q;
+            document.getElementById('options-likert').classList.remove('hidden');
+            document.getElementById('options-dilemma').classList.add('hidden');
+        }
+
+        document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected-answer'));
+        if(state.answers[idx]) {
+            const container = isDilemma ? 'options-dilemma' : 'options-likert';
+            document.querySelector(`#${container} button[data-val="${state.answers[idx]}"]`).classList.add('selected-answer');
+        }
+        document.getElementById('btn-prev').style.visibility = idx > 0 ? 'visible' : 'hidden';
+    }
+
+    function submitAnswer(val, btn) {
+        state.answers[state.currentIndex] = val;
+        btn.classList.add('selected-answer');
+        
+        setTimeout(() => {
+            if(state.currentIndex < state.activeQuestions.length - 1) {
+                state.currentIndex++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }, 200);
+    }
+
+    function prevQuestion() {
+        if(state.currentIndex > 0) {
+            state.currentIndex--;
+            renderQuestion();
+        }
+    }
+
+    function showResults() {
+        document.getElementById('screen-survey').classList.add('hidden');
+        document.getElementById('screen-results').classList.remove('hidden');
+        
+        // Simple Score Logic
+        const labels = ["소명의식", "정직성", "자기일치", "윤리결단", "삶의의미"];
+        const scoreList = document.getElementById('score-list');
+        scoreList.innerHTML = '';
+        
+        labels.forEach((label, i) => {
+            const score = 70 + Math.floor(Math.random() * 25); // Prototype mock scores
+            scoreList.innerHTML += `
+                <div>
+                    <div class="flex justify-between text-xs font-bold mb-2">
+                        <span class="text-slate-600">${label}</span>
+                        <span class="text-blue-600">${score}%</span>
+                    </div>
+                    <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-blue-500 rounded-full" style="width: ${score}%"></div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Radar Chart (Mock implementation)
+        drawRadar([85, 92, 78, 88, 95]);
+    }
+
+    function drawRadar(scores) {
+        const svg = document.getElementById('radar-chart');
+        svg.innerHTML = '';
+        const center = 200, radius = 140;
+        const points = 5;
+        
+        // Draw Web
+        for(let i=1; i<=5; i++) {
+            let p = "";
+            for(let j=0; j<points; j++) {
+                let angle = (Math.PI*2/points)*j - Math.PI/2;
+                p += `${center + (radius/5*i)*Math.cos(angle)},${center + (radius/5*i)*Math.sin(angle)} `;
+            }
+            svg.innerHTML += `<polygon points="${p}" fill="none" stroke="#e2e8f0" stroke-width="1"/>`;
+        }
+
+        // Draw Data
+        let dataPoints = "";
+        scores.forEach((s, i) => {
+            let angle = (Math.PI*2/points)*i - Math.PI/2;
+            dataPoints += `${center + (s/100*radius)*Math.cos(angle)},${center + (s/100*radius)*Math.sin(angle)} `;
+        });
+        svg.innerHTML += `<polygon points="${dataPoints}" fill="rgba(37, 99, 235, 0.2)" stroke="#2563eb" stroke-width="3"/>`;
+    }
+
+    async function downloadReport() {
+        const el = document.getElementById('capture-area');
+        const canvas = await html2canvas(el, { scale: 2 });
+        const link = document.createElement('a');
+        link.download = 'I-Mirror_Result.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-04-27T04:29:03.307Z",
+  "summary": {
+    "finance": {
+      "totalIncome": 0,
+      "balance": 0,
+      "status": "Active"
+    },
+    "personnel": {
+      "submitted": 0,
+      "missing": 210,
+      "rate": "0.0%"
+    },
+    "security": {
+      "issuesDetected": 0,
+      "lastAudit": "2026-04-27T04:28:49.692Z"
+    }
+  }
+}

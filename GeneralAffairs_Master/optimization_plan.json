@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-04-27T04:28:51.958Z",
+  "surplusDioceses": [
+    "Seoul",
+    "Incheon"
+  ],
+  "targetDioceses": [
+    "Incheon",
+    "Gyeonggi_North",
+    "Chungbuk",
+    "Jeonnam",
+    "Gyeongbuk",
+    "Gyeongnam",
+    "Daegu"
+  ],
+  "reallocationPlan": {
+    "budget": "₩ 105,000,000",
+    "personnel": "4명 유동 배치",
+    "priority": "HIGH"
+  },
+  "recommendation": "위 7개 교구에 총 105,000,000원의 긴급 행정 지원금을 배정하고, 전문 인력을 배치하여 제출 무결성을 확보하십시오.",
+  "efficiencyGain": "+12.4% 예상"
+}

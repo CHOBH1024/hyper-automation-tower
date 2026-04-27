@@ -1,0 +1,29 @@
+{
+  "lastSync": "2026-04-27T04:29:04.360Z",
+  "syncedPhotos": [
+    {
+      "diocese": "Seoul",
+      "fileName": "Seoul_Activity_1777264144353.jpg",
+      "status": "SYNCED_TO_MASTER_REPORT",
+      "timestamp": "2026-04-27T04:29:04.354Z"
+    },
+    {
+      "diocese": "Incheon",
+      "fileName": "Incheon_Activity_1777264144359.jpg",
+      "status": "SYNCED_TO_MASTER_REPORT",
+      "timestamp": "2026-04-27T04:29:04.359Z"
+    },
+    {
+      "diocese": "Jeju",
+      "fileName": "Jeju_Activity_1777264144360.jpg",
+      "status": "SYNCED_TO_MASTER_REPORT",
+      "timestamp": "2026-04-27T04:29:04.360Z"
+    },
+    {
+      "diocese": "Busan",
+      "fileName": "Busan_Activity_1777264144360.jpg",
+      "status": "SYNCED_TO_MASTER_REPORT",
+      "timestamp": "2026-04-27T04:29:04.360Z"
+    }
+  ]
+}

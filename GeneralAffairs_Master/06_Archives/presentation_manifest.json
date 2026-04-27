@@ -1,0 +1,48 @@
+{
+  "title": "신한국 총무국 통합 발표 자료",
+  "date": "2026-04-27T01:38:14.026Z",
+  "summary": {
+    "totalFiles": 5,
+    "formats": {
+      "pdf": 4,
+      "pptx": 1
+    }
+  },
+  "files": [
+    {
+      "fileName": "Seoul_Report.pdf",
+      "type": "PDF Document",
+      "diocese": "Seoul",
+      "inferredTitle": "Seoul Weekly Administrative Briefing",
+      "priority": 0
+    },
+    {
+      "fileName": "Incheon_Report.pdf",
+      "type": "PDF Document",
+      "diocese": "Incheon",
+      "inferredTitle": "Incheon Weekly Administrative Briefing",
+      "priority": 1
+    },
+    {
+      "fileName": "Gyeonggi_North_Slides.pptx",
+      "type": "PowerPoint Presentation",
+      "diocese": "Gyeonggi_North",
+      "inferredTitle": "Gyeonggi_North Weekly Administrative Briefing",
+      "priority": 2
+    },
+    {
+      "fileName": "Busan_Report.pdf",
+      "type": "PDF Document",
+      "diocese": "Busan",
+      "inferredTitle": "Busan Weekly Administrative Briefing",
+      "priority": 13
+    },
+    {
+      "fileName": "Unknown_Presentation.pdf",
+      "type": "PDF Document",
+      "diocese": "Others",
+      "inferredTitle": "Others Weekly Administrative Briefing",
+      "priority": 999
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-04-27T04:28:54.290Z",
+  "status": "SIMULATION_COMPLETE",
+  "bestAction": "자금 긴급 지원",
+  "confidenceScore": "94.00%",
+  "details": [
+    {
+      "id": "SCEN-01",
+      "action": "자금 긴급 지원",
+      "predictedImpact": "재무 안정성 +15%, 현장 만족도 +20%",
+      "successRate": 0.94
+    },
+    {
+      "id": "SCEN-03",
+      "action": "시스템 전면 업데이트",
+      "predictedImpact": "기술 정합성 +30%, 일시적 가동 중단 리스크 15%",
+      "successRate": 0.78
+    },
+    {
+      "id": "SCEN-02",
+      "action": "인력 강제 조정",
+      "predictedImpact": "인사 리스크 +10%, 운영 효율 +5%",
+      "successRate": 0.42
+    }
+  ],
+  "recommendation": "분석 결과 '자금 긴급 지원' 조치가 가장 낮은 리스크와 가장 높은 기대 효과를 보임. 즉각 집행 권고."
+}

@@ -1,0 +1,23 @@
+{
+  "lastRun": "2026-04-27T04:28:56.244Z",
+  "orders": [
+    {
+      "orderId": "ORDER-1777264136141-Chungbuk",
+      "target": "Pastor_1",
+      "diocese": "Chungbuk",
+      "path": "GeneralAffairs_Master/06_Orders/ORDER-1777264136141-Chungbuk.txt"
+    },
+    {
+      "orderId": "ORDER-1777264136234-Gyeongbuk",
+      "target": "Pastor_1",
+      "diocese": "Gyeongbuk",
+      "path": "GeneralAffairs_Master/06_Orders/ORDER-1777264136234-Gyeongbuk.txt"
+    },
+    {
+      "orderId": "ORDER-1777264136239-Gyeongnam",
+      "target": "Pastor_1",
+      "diocese": "Gyeongnam",
+      "path": "GeneralAffairs_Master/06_Orders/ORDER-1777264136239-Gyeongnam.txt"
+    }
+  ]
+}

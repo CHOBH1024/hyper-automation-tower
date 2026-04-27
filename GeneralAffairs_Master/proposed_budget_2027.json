@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-04-27T04:29:01.503Z",
+  "fiscalYear": "2027",
+  "totalBudget": "₩1,750,000,000",
+  "allocation": [
+    {
+      "dept": "총무",
+      "amount": "₩450,000,000",
+      "priority": "HIGH"
+    },
+    {
+      "dept": "IT/자동화",
+      "amount": "₩600,000,000",
+      "priority": "URGENT"
+    },
+    {
+      "dept": "재무/리스크",
+      "amount": "₩300,000,000",
+      "priority": "MEDIUM"
+    },
+    {
+      "dept": "교구/협력",
+      "amount": "₩400,000,000",
+      "priority": "HIGH"
+    }
+  ],
+  "strategy": "초지능 인프라 확충 및 글로벌 동기화 가속화",
+  "status": "DRAFT_AUTO_GENERATED"
+}

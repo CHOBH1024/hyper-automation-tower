@@ -1,0 +1,135 @@
+{
+  "timestamp": "2026-04-27T04:28:50.154Z",
+  "summary": {
+    "totalDioceses": 14,
+    "highRiskCount": 7
+  },
+  "risks": [
+    {
+      "diocese": "Seoul",
+      "leader": "홍길동 마스터",
+      "riskScore": 70,
+      "status": "MODERATE",
+      "predictedMissingType": "Photos",
+      "recommendation": "정상 모니터링",
+      "messageDraft": ""
+    },
+    {
+      "diocese": "Incheon",
+      "leader": "Pastor_1",
+      "riskScore": 75,
+      "status": "HIGH RISK",
+      "predictedMissingType": "Finance",
+      "recommendation": "❗ Finance 자료 집중 관리 요망",
+      "messageDraft": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서."
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "leader": "Pastor_1",
+      "riskScore": 80,
+      "status": "HIGH RISK",
+      "predictedMissingType": "Personnel",
+      "recommendation": "❗ Personnel 자료 집중 관리 요망",
+      "messageDraft": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서."
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "leader": "Pastor_1",
+      "riskScore": 55,
+      "status": "MODERATE",
+      "predictedMissingType": "Personnel",
+      "recommendation": "정상 모니터링",
+      "messageDraft": ""
+    },
+    {
+      "diocese": "Gangwon",
+      "leader": "Pastor_1",
+      "riskScore": 44,
+      "status": "MODERATE",
+      "predictedMissingType": "None",
+      "recommendation": "정상 모니터링",
+      "messageDraft": ""
+    },
+    {
+      "diocese": "Chungbuk",
+      "leader": "Pastor_1",
+      "riskScore": 91,
+      "status": "HIGH RISK",
+      "predictedMissingType": "Personnel",
+      "recommendation": "❗ Personnel 자료 집중 관리 요망",
+      "messageDraft": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서."
+    },
+    {
+      "diocese": "Chungnam",
+      "leader": "Pastor_1",
+      "riskScore": 9,
+      "status": "LOW",
+      "predictedMissingType": "None",
+      "recommendation": "정상 모니터링",
+      "messageDraft": ""
+    },
+    {
+      "diocese": "Jeonbuk",
+      "leader": "Pastor_1",
+      "riskScore": 42,
+      "status": "MODERATE",
+      "predictedMissingType": "None",
+      "recommendation": "정상 모니터링",
+      "messageDraft": ""
+    },
+    {
+      "diocese": "Jeonnam",
+      "leader": "Pastor_1",
+      "riskScore": 71,
+      "status": "HIGH RISK",
+      "predictedMissingType": "Personnel",
+      "recommendation": "❗ Personnel 자료 집중 관리 요망",
+      "messageDraft": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서."
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "leader": "Pastor_1",
+      "riskScore": 93,
+      "status": "HIGH RISK",
+      "predictedMissingType": "Security",
+      "recommendation": "❗ Security 자료 집중 관리 요망",
+      "messageDraft": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서."
+    },
+    {
+      "diocese": "Gyeongnam",
+      "leader": "Pastor_1",
+      "riskScore": 87,
+      "status": "HIGH RISK",
+      "predictedMissingType": "Personnel",
+      "recommendation": "❗ Personnel 자료 집중 관리 요망",
+      "messageDraft": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서."
+    },
+    {
+      "diocese": "Jeju",
+      "leader": "Pastor_1",
+      "riskScore": 14,
+      "status": "LOW",
+      "predictedMissingType": "None",
+      "recommendation": "정상 모니터링",
+      "messageDraft": ""
+    },
+    {
+      "diocese": "Daegu",
+      "leader": "Pastor_1",
+      "riskScore": 71,
+      "status": "HIGH RISK",
+      "predictedMissingType": "Photos",
+      "recommendation": "❗ Photos 자료 집중 관리 요망",
+      "messageDraft": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서."
+    },
+    {
+      "diocese": "Busan",
+      "leader": "Pastor_1",
+      "riskScore": 29,
+      "status": "LOW",
+      "predictedMissingType": "None",
+      "recommendation": "정상 모니터링",
+      "messageDraft": ""
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "timestamp": "2026-04-27T04:28:49.169Z",
+  "totalChurches": 210,
+  "submittedCount": 0,
+  "missingCount": 210,
+  "missingDetails": [
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_1",
+      "leader": "홍길동 마스터",
+      "contact": "010-9730-1677"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_2",
+      "leader": "김철수 마스터",
+      "contact": "010-7308-9866"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-7648-9599"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-7263-7827"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-5159-5777"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-4352-1953"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-8423-8716"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-6858-7106"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-5025-8905"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_10",
+      "leader": "홍길동 마스터",
+      "contact": "010-8328-0964"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_11",
+      "leader": "홍길동 마스터",
+      "contact": "010-8670-7566"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_12",
+      "leader": "홍길동 마스터",
+      "contact": "010-1276-0766"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_13",
+      "leader": "홍길동 마스터",
+      "contact": "010-5101-7698"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_14",
+      "leader": "홍길동 마스터",
+      "contact": "010-5354-3506"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_15",
+      "leader": "홍길동 마스터",
+      "contact": "010-8458-5964"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-6810-5605"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-3419-5984"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-3206-4611"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-2187-5462"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-7621-6397"
+    }
+  ]
+}

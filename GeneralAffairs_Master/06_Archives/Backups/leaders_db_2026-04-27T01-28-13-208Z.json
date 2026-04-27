@@ -1,0 +1,1269 @@
+{
+  "metadata": {
+    "lastUpdated": "2026-04-27T01:25:14.810Z",
+    "totalCount": 210,
+    "version": "2.1"
+  },
+  "leaders": [
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-9730-1677"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-7308-9866"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-7648-9599"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-7263-7827"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-5159-5777"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-4352-1953"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-8423-8716"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-6858-7106"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-5025-8905"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-8328-0964"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-8670-7566"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-1276-0766"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-5101-7698"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-5354-3506"
+    },
+    {
+      "diocese": "Seoul",
+      "church": "Seoul_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-8458-5964"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-6810-5605"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-3419-5984"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-3206-4611"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-2187-5462"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-7621-6397"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-1776-1632"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-3636-4149"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-7494-2994"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-7181-1853"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-7976-0037"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-4362-1942"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-6696-4595"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-5788-0053"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-1792-8386"
+    },
+    {
+      "diocese": "Incheon",
+      "church": "Incheon_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-8132-2976"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-3378-6619"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-8990-7044"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-7550-9275"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-1909-5148"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-3441-5278"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-1970-9073"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-4683-5690"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-4410-8407"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-2700-1548"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-4724-7763"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-1801-0946"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-1909-3636"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-5420-8087"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-5428-7037"
+    },
+    {
+      "diocese": "Gyeonggi_North",
+      "church": "Gyeonggi_North_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-8124-0723"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-7026-7241"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-2518-4707"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-7697-5050"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-1433-6215"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-2842-3476"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-4667-4876"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-5514-2594"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-1202-3425"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-2079-4567"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-7779-2991"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-1322-3648"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-5043-7087"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-4851-7809"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-7483-6969"
+    },
+    {
+      "diocese": "Gyeonggi_South",
+      "church": "Gyeonggi_South_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-5524-0833"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-9752-9874"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-5488-6542"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-5291-3423"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-8597-8181"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-1807-2549"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-6280-6228"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-4192-4207"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-2675-8086"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-3396-0550"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-6033-8388"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-5056-7646"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-6222-6035"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-2958-2365"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-5420-2931"
+    },
+    {
+      "diocese": "Gangwon",
+      "church": "Gangwon_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-2260-5700"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-9945-6740"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-9047-6517"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-9661-9331"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-1233-4338"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-6342-0412"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-8974-7635"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-9590-9903"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-6019-0090"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-9123-8505"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-9304-7783"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-4925-9507"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-6690-0994"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-5537-0018"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-9779-0694"
+    },
+    {
+      "diocese": "Chungbuk",
+      "church": "Chungbuk_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-6396-8843"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-5821-0946"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-8727-9899"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-5665-2045"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-7958-2011"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-6550-3946"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-9396-6517"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-7183-7232"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-8854-4333"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-7049-4636"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-2923-0958"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-8831-8788"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-6428-8515"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-8528-2370"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-5390-0531"
+    },
+    {
+      "diocese": "Chungnam",
+      "church": "Chungnam_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-1240-8105"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-1129-4181"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-1869-8887"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-9584-0525"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-2569-5565"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-3739-8159"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-8098-5440"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-7709-7788"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-1966-7468"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-7717-8500"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-5269-5433"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-6913-7401"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-9516-9857"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-3046-1299"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-6414-9479"
+    },
+    {
+      "diocese": "Jeonbuk",
+      "church": "Jeonbuk_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-1395-8840"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-2767-1515"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-1354-9487"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-8408-2428"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-1405-2805"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-6993-0327"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-9827-7938"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-3705-6752"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-6579-0442"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-1617-0854"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-8066-1834"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-5831-0803"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-6861-3635"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-4662-9386"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-8392-9427"
+    },
+    {
+      "diocese": "Jeonnam",
+      "church": "Jeonnam_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-9332-2139"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-4527-8369"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-9046-1553"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-6008-3215"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-3897-2955"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-7641-3687"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-7856-0020"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-6472-4325"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-7639-0260"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-2486-8493"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-4148-4796"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-5067-0077"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-3455-8975"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-6072-4945"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-6948-2259"
+    },
+    {
+      "diocese": "Gyeongbuk",
+      "church": "Gyeongbuk_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-7805-8735"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-6737-4250"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-1043-9231"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-7146-4664"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-6957-1797"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-2890-0552"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-2756-1995"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-8821-6559"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-7047-3644"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-5223-2207"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-2572-7293"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-1531-1678"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-1871-1280"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-5808-9256"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-6505-4753"
+    },
+    {
+      "diocese": "Gyeongnam",
+      "church": "Gyeongnam_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-4049-6890"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-6854-6994"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-5691-4286"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-9989-7268"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-9966-4792"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-2320-3561"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-9666-5103"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-9224-0081"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-5182-1843"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-5434-8714"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-4237-5746"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-9700-0321"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-1254-4221"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-1391-8438"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-2775-8715"
+    },
+    {
+      "diocese": "Jeju",
+      "church": "Jeju_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-9411-6679"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-5137-7854"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-9103-9795"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-2325-0431"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-8825-7611"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-8141-3204"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-5593-0228"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-5138-0318"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-4443-8410"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-5509-8356"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-2406-8484"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-8639-2599"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-8317-8355"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-6525-3635"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-9859-0555"
+    },
+    {
+      "diocese": "Daegu",
+      "church": "Daegu_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-1775-3455"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_1",
+      "leader": "Pastor_1",
+      "contact": "010-7897-7597"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_2",
+      "leader": "Pastor_2",
+      "contact": "010-2988-3074"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_3",
+      "leader": "Pastor_3",
+      "contact": "010-1949-0480"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_4",
+      "leader": "Pastor_4",
+      "contact": "010-4532-4620"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_5",
+      "leader": "Pastor_5",
+      "contact": "010-5099-8487"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_6",
+      "leader": "Pastor_6",
+      "contact": "010-3900-7245"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_7",
+      "leader": "Pastor_7",
+      "contact": "010-5308-0453"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_8",
+      "leader": "Pastor_8",
+      "contact": "010-8741-2702"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_9",
+      "leader": "Pastor_9",
+      "contact": "010-8468-8613"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_10",
+      "leader": "Pastor_10",
+      "contact": "010-5217-6582"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_11",
+      "leader": "Pastor_11",
+      "contact": "010-4330-8293"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_12",
+      "leader": "Pastor_12",
+      "contact": "010-6169-1185"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_13",
+      "leader": "Pastor_13",
+      "contact": "010-4241-5810"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_14",
+      "leader": "Pastor_14",
+      "contact": "010-7167-3462"
+    },
+    {
+      "diocese": "Busan",
+      "church": "Busan_Church_15",
+      "leader": "Pastor_15",
+      "contact": "010-6325-9512"
+    }
+  ]
+}

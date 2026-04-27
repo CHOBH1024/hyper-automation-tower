@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-04-27T04:28:43.359Z",
+  "status": "THRESHOLDS_ADAPTED",
+  "updates": [
+    {
+      "target": "System Y (Self-Healing)",
+      "parameter": "LatencyThreshold",
+      "newValue": "750.00ms"
+    },
+    {
+      "target": "System J (Personnel Risk)",
+      "parameter": "RiskThreshold",
+      "newValue": "56.15%"
+    }
+  ],
+  "reason": "과거 7일간의 피크 운영 지표를 반영한 동적 안정성 강화."
+}

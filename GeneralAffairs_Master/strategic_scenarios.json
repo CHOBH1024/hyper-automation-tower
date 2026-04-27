@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-04-27T04:30:13.699Z",
+  "baseBudget": "₩1,750,000,000",
+  "scenarios": [
+    {
+      "type": "OPTIMISTIC",
+      "growth": "+12%",
+      "risk": "LOW",
+      "efficiency": "MAX"
+    },
+    {
+      "type": "NEUTRAL",
+      "growth": "+5%",
+      "risk": "MEDIUM",
+      "efficiency": "STABLE"
+    },
+    {
+      "type": "PESSIMISTIC",
+      "growth": "-3%",
+      "risk": "HIGH",
+      "efficiency": "CAUTIOUS"
+    }
+  ],
+  "recommendedScenario": "OPTIMISTIC (가속화 전략 채택 권고)",
+  "simulationConfidence": "96.8%",
+  "status": "SIMULATION_COMPLETE"
+}

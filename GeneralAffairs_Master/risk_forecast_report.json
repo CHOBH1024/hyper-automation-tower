@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-04-27T04:28:53.078Z",
+  "targetPeriod": "Next Week (May 4 - May 10)",
+  "status": "STABLE",
+  "risks": [
+    {
+      "type": "PERSONNEL",
+      "probability": 0.15,
+      "description": "휴가 시즌으로 인한 보고 지연 리스크",
+      "severity": "LOW"
+    },
+    {
+      "type": "FINANCE",
+      "probability": 0.08,
+      "description": "예산 집행 불균형 가능성",
+      "severity": "LOW"
+    },
+    {
+      "type": "SECURITY",
+      "probability": 0.03,
+      "description": "인증 만료 갱신 필요",
+      "severity": "MEDIUM"
+    }
+  ],
+  "mitigationStrategy": "선제적 보고 독려 및 예산 집행 주기성 점검 권고."
+}

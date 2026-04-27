@@ -1,0 +1,61 @@
+{
+  "lastDispatch": "2026-04-27T04:28:55.425Z",
+  "results": [
+    {
+      "id": "DISPATCH-1777264135418-Incheon",
+      "target": "Pastor_1",
+      "diocese": "Incheon",
+      "message": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서.",
+      "status": "SENT_SUCCESS",
+      "timestamp": "2026-04-27T04:28:55.418Z"
+    },
+    {
+      "id": "DISPATCH-1777264135425-Gyeonggi_North",
+      "target": "Pastor_1",
+      "diocese": "Gyeonggi_North",
+      "message": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서.",
+      "status": "SENT_SUCCESS",
+      "timestamp": "2026-04-27T04:28:55.425Z"
+    },
+    {
+      "id": "DISPATCH-1777264135425-Chungbuk",
+      "target": "Pastor_1",
+      "diocese": "Chungbuk",
+      "message": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서.",
+      "status": "SENT_SUCCESS",
+      "timestamp": "2026-04-27T04:28:55.425Z"
+    },
+    {
+      "id": "DISPATCH-1777264135425-Jeonnam",
+      "target": "Pastor_1",
+      "diocese": "Jeonnam",
+      "message": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서.",
+      "status": "SENT_SUCCESS",
+      "timestamp": "2026-04-27T04:28:55.425Z"
+    },
+    {
+      "id": "DISPATCH-1777264135425-Gyeongbuk",
+      "target": "Pastor_1",
+      "diocese": "Gyeongbuk",
+      "message": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서.",
+      "status": "SENT_SUCCESS",
+      "timestamp": "2026-04-27T04:28:55.425Z"
+    },
+    {
+      "id": "DISPATCH-1777264135425-Gyeongnam",
+      "target": "Pastor_1",
+      "diocese": "Gyeongnam",
+      "message": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서.",
+      "status": "SENT_SUCCESS",
+      "timestamp": "2026-04-27T04:28:55.425Z"
+    },
+    {
+      "id": "DISPATCH-1777264135425-Daegu",
+      "target": "Pastor_1",
+      "diocese": "Daegu",
+      "message": "[긴급 독려] Pastor_1 목사님, Antigravity AI 분석 결과 본 교구의 금주 보고 제출 지연 위험이 감지되었습니다. 원활한 전사 통합을 위해 빠른 회신을 혜량하여 주시옵소서.",
+      "status": "SENT_SUCCESS",
+      "timestamp": "2026-04-27T04:28:55.425Z"
+    }
+  ]
+}

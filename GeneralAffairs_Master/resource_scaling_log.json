@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-04-27T04:28:45.555Z",
+  "mode": "BALANCED",
+  "priority": [
+    "E",
+    "G",
+    "H"
+  ],
+  "actions": [
+    "비핵심 엔진(A, F, D) 연산 주기 200ms로 조정",
+    "핵심 엔진 가용 메모리 NORMAL 확보"
+  ]
+}

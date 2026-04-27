@@ -1,0 +1,11 @@
+{
+  "lastScan": "2026-04-27T04:28:51.313Z",
+  "blocks": [
+    {
+      "ip": "192.168.1.105",
+      "action": "IP_BLOCKED_PERMANENT",
+      "reason": "BRUTE_FORCE_ATTEMPT",
+      "timestamp": "2026-04-27T04:28:51.313Z"
+    }
+  ]
+}

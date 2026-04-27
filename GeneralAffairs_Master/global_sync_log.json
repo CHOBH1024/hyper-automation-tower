@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-04-27T04:29:02.158Z",
+  "networkStatus": "CONNECTED",
+  "activeNodes": 5,
+  "syncLog": [
+    {
+      "diocese": "SEOUL",
+      "status": "SYNCED",
+      "sharedPolicies": 2,
+      "receivedInsights": 1,
+      "latency": "36ms"
+    },
+    {
+      "diocese": "BUSAN",
+      "status": "SYNCED",
+      "sharedPolicies": 2,
+      "receivedInsights": 1,
+      "latency": "31ms"
+    },
+    {
+      "diocese": "DAEGU",
+      "status": "SYNCED",
+      "sharedPolicies": 2,
+      "receivedInsights": 1,
+      "latency": "31ms"
+    },
+    {
+      "diocese": "GWANGJU",
+      "status": "SYNCED",
+      "sharedPolicies": 2,
+      "receivedInsights": 1,
+      "latency": "46ms"
+    },
+    {
+      "diocese": "DAEJEON",
+      "status": "SYNCED",
+      "sharedPolicies": 2,
+      "receivedInsights": 1,
+      "latency": "17ms"
+    }
+  ],
+  "message": "전국 5개 광역 교구와 행정 지능망 동기화 완료. 전사적 표준 정책 전파 중."
+}

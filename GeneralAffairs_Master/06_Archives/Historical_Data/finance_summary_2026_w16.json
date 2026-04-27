@@ -1,0 +1,11 @@
+{
+  "totalIncome": 450000000,
+  "totalExpense": 350000000,
+  "details": [
+    {
+      "diocese": "Seoul",
+      "status": "⚠️ 집행 과다",
+      "executionRate": "96.5"
+    }
+  ]
+}

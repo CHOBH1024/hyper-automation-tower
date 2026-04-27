@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-04-27T04:28:48.519Z",
+  "metrics": {
+    "currentIntegrityScore": "90.19%",
+    "confidenceInterval": "98.4%",
+    "predictedRiskLevel": "OPTIMAL"
+  },
+  "insights": [
+    "향후 4주간 재무 무결성이 90.19% 수준으로 유지될 것으로 예측됨.",
+    "비정상 지출 패턴 탐지 확률 0.02% 미만 유지 중."
+  ]
+}

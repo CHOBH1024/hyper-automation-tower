@@ -1,0 +1,9 @@
+{
+  "currentWeek": "4월 4주",
+  "predictedNextWeekIncome": 1183333333,
+  "confidenceLevel": "64.2% (Anomaly Detected)",
+  "status": "⚠️ CAUTION",
+  "lastWeekAccuracy": "53.00%",
+  "analysis": "최근 4주간 평균 ₩ 183,333,333 씩 성장 중.",
+  "insight": "❗ 비정상적 성장 수치가 감지되었습니다. 데이터 오입력 또는 대규모 특수 헌금 여부를 즉시 확인하십시오."
+}

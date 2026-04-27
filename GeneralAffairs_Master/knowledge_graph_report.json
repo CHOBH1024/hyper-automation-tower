@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-04-27T04:29:01.070Z",
+  "nodes": [
+    {
+      "id": "총무",
+      "importance": "0.95"
+    },
+    {
+      "id": "재무",
+      "importance": "0.82"
+    },
+    {
+      "id": "인사",
+      "importance": "0.60"
+    },
+    {
+      "id": "교구",
+      "importance": "0.67"
+    },
+    {
+      "id": "보안",
+      "importance": "0.91"
+    }
+  ],
+  "edges": [
+    {
+      "source": "총무",
+      "target": "재무",
+      "strength": "0.32",
+      "lastSync": "2026-04-27T04:29:01.064Z"
+    },
+    {
+      "source": "총무",
+      "target": "인사",
+      "strength": "0.81",
+      "lastSync": "2026-04-27T04:29:01.070Z"
+    },
+    {
+      "source": "총무",
+      "target": "교구",
+      "strength": "0.30",
+      "lastSync": "2026-04-27T04:29:01.070Z"
+    },
+    {
+      "source": "총무",
+      "target": "보안",
+      "strength": "0.44",
+      "lastSync": "2026-04-27T04:29:01.070Z"
+    },
+    {
+      "source": "재무",
+      "target": "인사",
+      "strength": "0.54",
+      "lastSync": "2026-04-27T04:29:01.070Z"
+    },
+    {
+      "source": "재무",
+      "target": "교구",
+      "strength": "0.37",
+      "lastSync": "2026-04-27T04:29:01.070Z"
+    },
+    {
+      "source": "재무",
+      "target": "보안",
+      "strength": "0.62",
+      "lastSync": "2026-04-27T04:29:01.070Z"
+    },
+    {
+      "source": "인사",
+      "target": "교구",
+      "strength": "0.65",
+      "lastSync": "2026-04-27T04:29:01.070Z"
+    },
+    {
+      "source": "인사",
+      "target": "보안",
+      "strength": "0.44",
+      "lastSync": "2026-04-27T04:29:01.070Z"
+    },
+    {
+      "source": "교구",
+      "target": "보안",
+      "strength": "0.87",
+      "lastSync": "2026-04-27T04:29:01.070Z"
+    }
+  ],
+  "networkDensity": "0.84 (OPTIMAL)",
+  "insight": "인사-교구 부서 간 지식 공유가 전사적 행정 속도 향상의 핵심 허브로 분석됨."
+}

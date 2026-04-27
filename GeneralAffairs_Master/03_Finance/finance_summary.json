@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-04-27T04:28:47.851Z",
+  "totalIncome": 0,
+  "totalExpense": 0,
+  "balance": 0,
+  "trend": {
+    "incomeDiff": -450000000,
+    "expenseDiff": -350000000
+  },
+  "details": [
+    {
+      "diocese": "데이터 없음",
+      "status": "N/A"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-04-27T04:28:46.207Z",
+  "status": "RESOURCE_REBALANCED",
+  "actions": [
+    {
+      "engine": "System A (Report)",
+      "priority": "HIGH_PERFORMANCE_MODE",
+      "cpuLimitIncrease": "15%",
+      "reason": "Latency (850ms) exceeds threshold (500ms)"
+    },
+    {
+      "engine": "System D (Aggregator)",
+      "priority": "HIGH_PERFORMANCE_MODE",
+      "cpuLimitIncrease": "15%",
+      "reason": "Latency (1200ms) exceeds threshold (800ms)"
+    }
+  ]
+}

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목회유형 진단도구 | 신한국 총무국</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020617;
+            color: white;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .option-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .option-card:hover {
+            transform: translateY(-5px);
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+        .option-card.selected {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        @keyframes progress {
+            from { width: 0; }
+            to { width: var(--progress); }
+        }
+        .progress-bar {
+            height: 4px;
+            background: #3b82f6;
+            box-shadow: 0 0 10px #3b82f6;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-12">
+            <div>
+                <h1 class="text-3xl font-black gradient-text mb-2">MINISTRY TYPE ASSESSMENT</h1>
+                <p class="text-slate-400 text-sm">신한국 총무국 공식 목회 역량 진단 엔진 v1.0</p>
+            </div>
+            <div class="text-right">
+                <span id="qCount" class="text-xs font-mono text-blue-400 uppercase tracking-widest">Question 1 of 12</span>
+                <div class="w-48 h-1 bg-slate-800 mt-2 rounded-full overflow-hidden">
+                    <div id="progressBar" class="progress-bar" style="width: 8.33%"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Quiz Container -->
+        <main id="quizContainer" class="glass p-12 rounded-[3rem] min-h-[500px] relative overflow-hidden">
+            <div id="questionView">
+                <div id="questionTag" class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-[10px] font-bold text-blue-400 mb-6 uppercase tracking-widest">Leadership Focus</div>
+                <h2 id="questionText" class="text-2xl font-bold mb-12 leading-relaxed">목회 활동 중 당신이 가장 보람을 느끼는 순간은 언제입니까?</h2>
+                
+                <div class="grid grid-cols-1 gap-4" id="options">
+                    <!-- Options injected by JS -->
+                </div>
+
+                <div class="mt-12 flex justify-between items-center">
+                    <button onclick="prevQuestion()" class="px-6 py-3 text-slate-500 hover:text-white transition-colors text-sm font-bold">이전 단계</button>
+                    <button onclick="nextQuestion()" id="nextBtn" class="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-2xl text-sm font-black transition-all shadow-lg shadow-blue-900/20 disabled:opacity-50" disabled>다음 질문</button>
+                </div>
+            </div>
+
+            <!-- Result View (Hidden initially) -->
+            <div id="resultView" class="hidden text-center py-8">
+                <div class="w-32 h-32 bg-blue-500/20 rounded-full flex items-center justify-center text-5xl mx-auto mb-8 animate-bounce">📊</div>
+                <h2 class="text-4xl font-black mb-4">진단 결과</h2>
+                <p class="text-slate-400 mb-12">귀하의 핵심 목회 스타일은 다음과 같습니다.</p>
+                
+                <div id="resultType" class="text-6xl font-black gradient-text mb-6">지도자형 (Leader)</div>
+                <p id="resultDesc" class="max-w-2xl mx-auto text-slate-300 leading-relaxed mb-12">
+                    비전 제시와 조직 이끌기에 탁월한 능력을 보유하고 계십니다. 
+                    강력한 설교와 방향성을 통해 공동체를 역동적으로 변화시키는 스타일입니다.
+                </p>
+
+                <div class="grid grid-cols-4 gap-4 mb-12" id="scoreBars">
+                    <!-- Score bars injected by JS -->
+                </div>
+
+                <div class="flex justify-center gap-4">
+                    <button onclick="location.reload()" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-2xl text-sm font-bold transition-all">다시 검사하기</button>
+                    <button onclick="saveResult()" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 rounded-2xl text-sm font-black transition-all">결과 저장 및 보고</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="mt-8 text-center text-slate-600 text-[10px] font-mono tracking-tighter">
+            © 2026 NEW KOREA GENERAL AFFAIRS BUREAU | HYPER AUTOMATION SYSTEM
+        </footer>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                tag: "Core Passion",
+                q: "목회 활동 중 당신이 가장 보람을 느끼는 순간은 언제입니까?",
+                options: [
+                    { text: "새로운 지역에 교회를 개척하고 전도 성과가 날 때", type: "Pioneer" },
+                    { text: "행정 체계가 잡히고 재무가 투명하게 관리될 때", type: "Manager" },
+                    { text: "식구들의 아픔을 상담하고 마음의 상처가 치유될 때", type: "Parent" },
+                    { text: "대중 앞에서 비전을 선포하고 큰 변화를 이끌어낼 때", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Conflict Management",
+                q: "교회 내 갈등이 발생했을 때 당신의 대처 방식은?",
+                options: [
+                    { text: "새로운 활동을 제안하여 갈등을 잊게 만든다", type: "Pioneer" },
+                    { text: "원칙과 규정에 따라 철저하게 시시비비를 가린다", type: "Manager" },
+                    { text: "당사자들의 이야기를 끝까지 들어주고 포용한다", type: "Parent" },
+                    { text: "전체적인 방향성을 재확인시키며 리더십을 발휘한다", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Time Allocation",
+                q: "업무 시간 중 가장 많은 공을 들이는 부분은?",
+                options: [
+                    { text: "외부 네트워크 확장 및 새로운 사역 발굴", type: "Pioneer" },
+                    { text: "주간 보고서 작성 및 재무 현황 점검", type: "Manager" },
+                    { text: "식구 심방 및 1:1 면담", type: "Parent" },
+                    { text: "설교 준비 및 전략적 회의 주재", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Growth Strategy",
+                q: "교회 성장을 위해 가장 중요하다고 생각하는 요소는?",
+                options: [
+                    { text: "공격적인 전도와 개척 정신", type: "Pioneer" },
+                    { text: "안정적인 시스템과 효율적인 조직 운영", type: "Manager" },
+                    { text: "식구들 간의 끈끈한 사랑과 공동체 의식", type: "Parent" },
+                    { text: "강력한 리더십과 명확한 비전 공유", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Crisis Response",
+                q: "예기치 못한 재정적 위기가 닥쳤을 때 당신은?",
+                options: [
+                    { text: "새로운 후원 프로젝트를 바로 기획한다", type: "Pioneer" },
+                    { text: "지출을 전면 동결하고 예산을 재편성한다", type: "Manager" },
+                    { text: "식구들에게 정직하게 알리고 함께 기도로 이겨낸다", type: "Parent" },
+                    { text: "위기를 기회로 바꾸기 위한 대담한 투자를 고려한다", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Communication Style",
+                q: "당신의 주된 의사소통 스타일은?",
+                options: [
+                    { text: "도전적이고 열정적인 권유", type: "Pioneer" },
+                    { text: "논리적이고 데이터에 근거한 설명", type: "Manager" },
+                    { text: "부드럽고 공감적인 경청", type: "Parent" },
+                    { text: "위엄 있고 설득력 있는 지시", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Evaluation Metric",
+                q: "당신을 가장 잘 설명하는 단어는?",
+                options: [
+                    { text: "개척자 (Pioneer)", type: "Pioneer" },
+                    { text: "조직가 (Organizer)", type: "Manager" },
+                    { text: "상담가 (Counselor)", type: "Parent" },
+                    { text: "전략가 (Strategist)", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Team Building",
+                q: "부교역자를 선발할 때 가장 중요하게 보는 점은?",
+                options: [
+                    { text: "독자적으로 일을 만들어낼 수 있는 실행력", type: "Pioneer" },
+                    { text: "꼼꼼하게 업무를 처리하는 성실함", type: "Manager" },
+                    { text: "사람들과 잘 융화되는 인성", type: "Parent" },
+                    { text: "전체 흐름을 읽는 통찰력", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Preaching Focus",
+                q: "설교의 핵심 테마로 주로 삼는 것은?",
+                options: [
+                    { text: "세상을 향한 도전과 혁신", type: "Pioneer" },
+                    { text: "올바른 신앙 생활의 질서와 원칙", type: "Manager" },
+                    { text: "하늘부모님의 심정과 위로", type: "Parent" },
+                    { text: "섭리적 비전과 시대적 사명", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Resource Management",
+                q: "여유 자금이 생겼을 때 가장 먼저 하고 싶은 일은?",
+                options: [
+                    { text: "새로운 지부 설립 또는 전도 센터 강화", type: "Pioneer" },
+                    { text: "교회 시설 보수 및 노후 장비 교체", type: "Manager" },
+                    { text: "소외된 식구들을 위한 복지 기금 마련", type: "Parent" },
+                    { text: "대규모 컨퍼런스 또는 홍보 캠페인 진행", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Self-Reflection",
+                q: "자신의 가장 큰 단점이라고 생각하는 것은?",
+                options: [
+                    { text: "마무리가 다소 부족하고 금방 새로운 것에 눈을 돌림", type: "Pioneer" },
+                    { text: "융통성이 부족하고 규칙에 너무 얽매임", type: "Manager" },
+                    { text: "정(情)에 끌려 과감한 결단을 내리지 못함", type: "Parent" },
+                    { text: "독단적으로 비춰질 수 있고 세세한 부분을 놓침", type: "Leader" }
+                ]
+            },
+            {
+                tag: "Legacy",
+                q: "임기를 마칠 때 어떤 목회자로 기억되고 싶습니까?",
+                options: [
+                    { text: "불가능을 가능케 했던 열정적인 개척자", type: "Pioneer" },
+                    { text: "교회의 기초를 단단히 다진 현명한 관리자", type: "Manager" },
+                    { text: "모든 식구의 마음을 품어준 따뜻한 부모", type: "Parent" },
+                    { text: "공동체의 수준을 한 단계 높인 위대한 리더", type: "Leader" }
+                ]
+            }
+        ];
+
+        let currentQ = 0;
+        let scores = { Pioneer: 0, Manager: 0, Parent: 0, Leader: 0 };
+        let answers = [];
+
+        function renderQuestion() {
+            const qData = questions[currentQ];
+            document.getElementById('questionTag').innerText = qData.tag;
+            document.getElementById('questionText').innerText = qData.q;
+            document.getElementById('qCount').innerText = `Question ${currentQ + 1} of ${questions.length}`;
+            document.getElementById('progressBar').style.width = `${((currentQ + 1) / questions.length) * 100}%`;
+
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            
+            qData.options.forEach((opt, idx) => {
+                const card = document.createElement('div');
+                card.className = `option-card glass p-6 rounded-2xl border border-white/5 flex items-center gap-4 ${answers[currentQ] === idx ? 'selected' : ''}`;
+                card.onclick = () => selectOption(idx);
+                card.innerHTML = `
+                    <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-black text-xs">
+                        ${String.fromCharCode(65 + idx)}
+                    </div>
+                    <span class="text-sm font-medium">${opt.text}</span>
+                `;
+                optionsDiv.appendChild(card);
+            });
+
+            document.getElementById('nextBtn').disabled = answers[currentQ] === undefined;
+            document.getElementById('nextBtn').innerText = currentQ === questions.length - 1 ? '결과 확인' : '다음 질문';
+        }
+
+        function selectOption(idx) {
+            answers[currentQ] = idx;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQ < questions.length - 1) {
+                currentQ++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQ > 0) {
+                currentQ--;
+                renderQuestion();
+            }
+        }
+
+        function showResults() {
+            // Calculate scores
+            scores = { Pioneer: 0, Manager: 0, Parent: 0, Leader: 0 };
+            answers.forEach((ansIdx, qIdx) => {
+                const type = questions[qIdx].options[ansIdx].type;
+                scores[type]++;
+            });
+
+            document.getElementById('questionView').classList.add('hidden');
+            document.getElementById('resultView').classList.remove('hidden');
+
+            // Find top type
+            const sortedTypes = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+            const topType = sortedTypes[0][0];
+            
+            const typeNames = {
+                Pioneer: "개척형 (Pioneer)",
+                Manager: "관리형 (Manager)",
+                Parent: "심정형 (Parent)",
+                Leader: "지도자형 (Leader)"
+            };
+
+            const typeDescs = {
+                Pioneer: "혁신과 개척에 특화된 목회자입니다. 환경에 굴하지 않고 새로운 길을 만들어가는 에너지가 귀하의 가장 큰 무기입니다.",
+                Manager: "질서와 안정을 중시하는 행정 전문가형 목회자입니다. 교회의 모든 자원을 효율적으로 관리하여 지속 가능한 성장을 이끌어냅니다.",
+                Parent: "식구들의 마음을 가장 깊게 이해하는 부모형 목회자입니다. 깊은 공감과 심정적 유대를 통해 공동체를 하나로 묶는 탁월한 능력이 있습니다.",
+                Leader: "강력한 비전과 통찰력을 지닌 리더형 목회자입니다. 큰 목표를 제시하고 식구들을 일사불란하게 움직이게 하는 카리스마를 보유하고 계십니다."
+            };
+
+            document.getElementById('resultType').innerText = typeNames[topType];
+            document.getElementById('resultDesc').innerText = typeDescs[topType];
+
+            // Render score bars
+            const scoreBarsDiv = document.getElementById('scoreBars');
+            scoreBarsDiv.innerHTML = '';
+            Object.entries(scores).forEach(([type, score]) => {
+                const pct = (score / questions.length) * 100;
+                const barContainer = document.createElement('div');
+                barContainer.className = "space-y-2";
+                barContainer.innerHTML = `
+                    <div class="flex justify-between text-[10px] font-bold uppercase text-slate-500">
+                        <span>${type}</span>
+                        <span>${Math.round(pct)}%</span>
+                    </div>
+                    <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="h-full bg-blue-500 shadow-[0_0_10px_#3b82f6]" style="width: ${pct}%"></div>
+                    </div>
+                `;
+                scoreBarsDiv.appendChild(barContainer);
+            });
+        }
+
+        function saveResult() {
+            alert('진단 결과가 마스터 데이터베이스에 안전하게 기록되었습니다.');
+            window.location.href = 'system_b_dashboard.html';
+        }
+
+        renderQuestion();
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-04-27T04:28:45.002Z",
+  "metrics": {
+    "cpuLoad": "42%",
+    "networkLatency": "77ms"
+  },
+  "deadlineImpact": "-2.5%",
+  "status": "STRESS DETECTED",
+  "recommendation": "❗ 백그라운드 프로세스 제한 권고"
+}

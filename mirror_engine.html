@@ -98,6 +98,7 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const mirrorType = urlParams.get('type') || 'I';
+        const qCount = parseInt(urlParams.get('count')) || 30;
 
         const config = {
             'I': { title: 'I-Mirror', subtitle: '소명 및 내면 가치 진단', color: '#6366f1' },
@@ -112,11 +113,13 @@
         };
 
         const currentConfig = config[mirrorType] || config['I'];
-        document.getElementById('mirror-title').innerHTML = `MIRROR <span style="color:${currentConfig.color}">${mirrorType}</span>`;
-        document.getElementById('mirror-subtitle').innerText = currentConfig.subtitle;
+        const versionLabel = qCount === 30 ? 'Quick' : (qCount === 70 ? 'Standard' : 'Deep');
+        
+        document.getElementById('mirror-title').innerHTML = `MIRROR <span style="color:${currentConfig.color}">${mirrorType}</span> <span class="text-xs text-slate-600 font-black ml-2 opacity-50">${versionLabel}</span>`;
+        document.getElementById('mirror-subtitle').innerText = currentConfig.subtitle + ` (${qCount}문항)`;
 
-        // Sample Questions (Unified)
-        const questions = [
+        // Sample Questions
+        const baseQuestions = [
             "나는 현재 내가 하는 일이 단순한 직업 이상의 가치가 있다고 믿는다.",
             "조직의 목표를 달성하기 위해 개인의 희생이 때로는 필요하다고 생각한다.",
             "나는 새로운 변화에 직면했을 때 두려움보다 호기심이 앞선다.",
@@ -128,6 +131,19 @@
             "나는 나의 지식과 기술을 타인과 공유하는 것에서 보람을 느낀다.",
             "나는 스트레스 상황에서도 평정심을 유지하며 논리적으로 사고한다."
         ];
+
+        // Question Expansion Engine (Simulating full set based on base themes)
+        const questions = [];
+        for(let i=0; i<qCount; i++) {
+            const base = baseQuestions[i % baseQuestions.length];
+            if (i < baseQuestions.length) {
+                questions.push(base);
+            } else {
+                // Generate variations for higher counts
+                const variations = [" 에 대해 깊이 고민한다.", " 에 대해 주변의 피드백을 수렴한다.", " 의 중요성을 조직 내에 전파한다.", " 를 향상시키기 위해 정기적으로 노력한다."];
+                questions.push(base.replace(".", "") + variations[Math.floor(i / baseQuestions.length) % variations.length]);
+            }
+        }
 
         let currentIdx = 0;
         let answers = new Array(questions.length).fill(null);

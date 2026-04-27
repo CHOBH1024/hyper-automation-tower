@@ -194,10 +194,22 @@
                                 </div>
                             `).join('')}
                         </div>
-                        <div class="mt-10 pt-8 border-t border-white/5">
-                            <a href="mirror_engine.html?type=${m.id}" class="inline-flex items-center gap-3 px-10 py-4 bg-${m.color}-600 hover:bg-${m.color}-500 rounded-2xl text-sm font-black transition-all shadow-xl shadow-${m.color}-950/40">
-                                <i data-lucide="play" class="w-4 h-4"></i> 진단 시작하기
-                            </a>
+                        <div class="mt-10 pt-8 border-t border-white/5 space-y-4">
+                            <h4 class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-4">Select Diagnostic Depth</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <a href="mirror_engine.html?type=${m.id}&count=30" class="flex flex-col items-center justify-center p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/5 transition-all group">
+                                    <span class="text-lg font-black text-white">30</span>
+                                    <span class="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-1">Quick (5m)</span>
+                                </a>
+                                <a href="mirror_engine.html?type=${m.id}&count=70" class="flex flex-col items-center justify-center p-4 bg-indigo-600/20 hover:bg-indigo-600/40 rounded-2xl border border-indigo-500/30 transition-all group">
+                                    <span class="text-lg font-black text-indigo-400">70</span>
+                                    <span class="text-[9px] font-bold text-indigo-500/60 uppercase tracking-widest mt-1">Standard (15m)</span>
+                                </a>
+                                <a href="mirror_engine.html?type=${m.id}&count=120" class="flex flex-col items-center justify-center p-4 bg-indigo-600 hover:bg-indigo-500 rounded-2xl transition-all group shadow-lg shadow-indigo-950/40">
+                                    <span class="text-lg font-black text-white">120</span>
+                                    <span class="text-[9px] font-bold text-indigo-100 uppercase tracking-widest mt-1">Deep (30m)</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </section>
